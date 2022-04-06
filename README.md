@@ -1,6 +1,6 @@
 # CSM40
 
-### Nome do Projeto: Loja X
+### Nome do Projeto: PPT Hamburgueria
 
 ### Tipo de loja: Hamburgueria
 
