@@ -1,0 +1,33 @@
+form{
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+}
+
+label{
+	font-size: 12px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button{
+	border: 1px solid black;
+	border-radius: 25px;
+	box-shadow: 2px 2px black;
+}
+
+button:hover{
+	background-color: teal;
+	height: 30px;
+	width: 70px;
+}
+
+input:invalid{
+	border: 1px solid red;
+}
+
