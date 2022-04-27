@@ -1,16 +1,65 @@
 *{
 	font-family: 'Roboto', sans-serif;
+	color: #701510;
 }
 
 a{
 	text-decoration: none;
-	
 }
+
+/*a:link{
+	text-decoration: none;
+	color: #701510;
+}*/
 
 a:hover {
 	text-decoration: underline;
+	background-color:#FBC55E;
+	color: ;
 }
 
 a:visited {
-	color: blue;
+	color: #701510;
+	background-color:#FBC55E;
+}
+
+.main{
+	width: 80%;
+	height: 150%;
+	background-color:#FBC55E;
+	margin: -10px auto;
+}
+
+#logo{
+	display: flex;
+	justify-content: center;
+}
+
+#menu{
+
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.menuitem{
+	color: red;
+}
+
+body{
+	background-image: url("img/background.jpg");
+}
+
+.conteudo{
+	text-align: center;
+}
+
+h2{
+	color: #701510;
+}
+
+.whatsapp{
+	display: flex;
+	justify-content: center;
 }
