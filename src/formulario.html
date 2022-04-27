@@ -1,18 +1,20 @@
 <html>
-    <head>
-		<link rel = "stylesheet" href = "index.css">
-		<link rel = "stylesheet" href = "formulario.css">
-        <title>
-            Formulário
-        </title>
-    </head>
-    <body>
-		<div class= "main">
-			<div id= "logo">
+
+<head>
+	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="formulario.css">
+	<title>
+		Formulário
+	</title>
+</head>
+
+<body>
+	<div class="main">
+		<div id="logo">
 			<img src="img/logo2.png"></img>
-			</div>
-			</br>
-			<div id=menu>
+		</div>
+		</br>
+		<div id=menu>
 			<a href="index.html" class=menuitem>Home</a>
 			<a href="cardapio.html" class=menuitem>Cardápio</a>
 			<a href="sobre.html" class=menuitem>Sobre</a>
@@ -20,8 +22,8 @@
 			<a href="pedidos.html" class=menuitem>Pedidos</a>
 			<a href="administracao.html" class=menuitem>Administração</a>
 			<a href="formulario.html" class=menuitem>Cadastro</a>
-			</div>
-			<div class = conteudo>
+		</div>
+		<div class=conteudo>
 			<form action="/pagina-processa-dados-do-form" method="post">
 				<div>
 					<label for="name">Nome:</label>
@@ -32,7 +34,7 @@
 				<div>
 					<label for="cpf">CPF:</label>
 					</br>
-					<input type="text" id="cpf" />
+					<input type="number" id="cpf" pattern="([0-9]{3})\.([0-9]{3})\.([0-9]{3})-([0-9]{2})" />
 				</div>
 				</br>
 				<div>
@@ -72,50 +74,50 @@
 				</div>
 				</br>
 				<div>
-					<label for="uf">UF</label>
+					<label for="uf">UF:</label>
 					</br>
 					<select name="uf" id="uf" />
-						<option>----</option>
-						<option value = "AC">Acre</option>
-						<option value = "AL">Alagoas</option>
-						<option value = "AP">Amapá</option>
-						<option value = "AM">Amazonas</option>
-						<option value = "BA">Bahia</option>
-						<option value = "CE">Ceará</option>
-						<option value = "DF">Distrito Federal</option>
-						<option value = "ES">Espírito Santos</option>
-						<option value = "GO">Goiás</option>
-						<option value = "MA">Maranhão</option>
-						<option value = "MT">Mato Grosso</option>
-						<option value = "MS">Mato Grosso do Sul</option>
-						<option value = "MG">Minas Gerais</option>
-						<option value = "PA">Pará</option>
-						<option value = "PB">Paraíba</option>
-						<option value = "PR">Paraná</option>
-						<option value = "PE">Pernambuco</option>
-						<option value = "PI">Piauí</option>
-						<option value = "RJ">Rio de Janeiro</option>
-						<option value = "RN">Rio Grande do Norte</option>
-						<option value = "RS">Rio Grande do Sul</option>
-						<option value = "RO">Rondônia</option>
-						<option value = "RR">Roraima</option>
-						<option value = "SC">Santa Catarina</option>
-						<option value = "SP">São Paulo</option>
-						<option value = "SE">Sergipe</option>
-						<option value = "TO">Tocantins</option>
+					<option>----</option>
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espírito Santos</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI">Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP">São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>
 					</select>
 				</div>
 				</br>
-				
+
 				<div class="button">
-					<button type="submit">Submit</button>
-					<button type="reset">Reset</button>
+					<button class="button-4" type="submit">Submit</button>
+					<button class="button-4" type="reset">Reset</button>
 				</div>
-				
+
 			</form>
 		</div>
-			</div>
-		</div>
-		  
-			
+	</div>
+	</div>
+
+
 </html>
