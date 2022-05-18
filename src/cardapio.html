@@ -1,6 +1,17 @@
 <html>
     <head>
 		<link rel = "stylesheet" href = "index.css">
+		<script src="index.js"></script>
+		<script src="menu/menu.js"></script>
+		<script>
+			getAllProducts().then(products => {
+				generateMenu(products);
+				console.log(products);
+			});
+			getAllCategories().then(categories => {
+				console.log(categories);
+			})
+		</script>
         <title>
             Cardápio
         </title>
@@ -23,6 +34,8 @@
 			<div class = conteudo>
 			<h2>Cardápio</h2>
 			<a>Cardápio da Hamburgueria</a>
+			<ul id="menuOptions">
+			</ul>
 			</div>
 		</div>
         
