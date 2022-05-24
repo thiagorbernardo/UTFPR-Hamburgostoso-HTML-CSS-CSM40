@@ -32,16 +32,15 @@ const getCoinsPriceByPeriod = async (coins, startDate, endDate) => {
 
     return result;
 }
-const select = false
+const select = true
 const drawLineChart = () => {
     const coins = ["USD", "GBP", "EUR"]
     const data = new google.visualization.DataTable();
-    data.addColumn('date', 'X');
+    data.addColumn('date', 'data');
 
     coins.forEach(coin => data.addColumn('number', coin));
 
     getCoinsPriceByPeriod(coins, "05-16-2021", "05-20-2022").then(prices => {
-        console.log(prices)
         const table = [];
 
         const sizePerCoin = prices.length / coins.length;
