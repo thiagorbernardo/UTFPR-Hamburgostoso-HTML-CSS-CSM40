@@ -1,10 +1,11 @@
 * {
 	font-family: 'Roboto', sans-serif;
-	color: #1d17cf;
+	color: white;
 }
 
 a {
 	text-decoration: none;
+	color: #1d17cf;
 }
 
 a:hover {
@@ -56,8 +57,4 @@ body {
 
 .conteudo {
 	text-align: center;
-}
-
-h2 {
-	color: #1d17cf;
 }
