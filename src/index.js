@@ -1,60 +1,76 @@
-const url = "http://loja.buiar.com/?key=s7ueaj&f=json"
+const url = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata"
+const coins = [
+    {
+        "symbol": "EUR",
+        "name": "Euro"
+    },
+    {
+        "symbol": "GBP",
+        "name": "Libra Esterlina"
+    },
+    {
+        "symbol": "USD",
+        "name": "Dólar dos Estados Unidos"
+    }
+]
 
-const getAllProducts = async () => {
-    const res = await fetch(`${url}&c=produto&t=listar`);
+const getPriceByPeriod = async (coin, startDate, endDate) => {
+    const res = await fetch(`${url}/CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?%40moeda='${coin}'&%40dataInicial='${startDate}'&%40dataFinalCotacao='${endDate}'&%24format=json`);
     const data = await res.json();
 
-    return data.dados;
+    return data.value;
 }
 
-const getProductsByCategory = async (categoryId) => {
-    const res = await fetch(`${url}&c=produto&t=listar&categoria=${categoryId}`);
-    const data = await res.json();
+const getCoinsPriceByPeriod = async (coins, startDate, endDate) => {
+    const result = [];
 
-    return data.dados;
+    for (const coin of coins) {
+        const prices = await getPriceByPeriod(coin, startDate, endDate);
+        console.log(prices)
+        result.push(...prices);
+    }
+
+    return result;
 }
+const select = true
+const drawLineChart = () => {
+    const coins = ["USD", "GBP", "EUR"]
+    const data = new google.visualization.DataTable();
+    data.addColumn('date', 'data');
 
-const insertProduct = async (name, code, description, price, weight, categoryId) => {
-    const res = await fetch(`${url}&c=produto&t=inserir&nome=${name}&codigo=${code}&descricao=${description}&preco=${price}&peso=${weight}&categoria=${categoryId}`);
-    const data = await res.json();
+    coins.forEach(coin => data.addColumn('number', coin));
 
-    return data.dados;
-}
+    getCoinsPriceByPeriod(coins, "05-16-2021", "05-20-2022").then(prices => {
+        const table = [];
 
-const updateProduct = async (id, name, code, description, price, weight, categoryId) => {
-    //TODO: alterar para alguns serem opcionais
-    const res = await fetch(`${url}&c=produto&t=alterar&id=${id}&nome=${name}&codigo=${code}&descricao=${description}&preco=${price}&peso=${weight}&categoria=${categoryId}`);
-    const data = await res.json();
+        const sizePerCoin = prices.length / coins.length;
+        for (let i = 0; i < sizePerCoin; i++) {
+            const row = [new Date(prices[i].dataHoraCotacao)]
 
-    return data.dados;
-}
+            for (let j = 0; j < coins.length; j++) {
+                row.push(prices[i + j * sizePerCoin].cotacaoCompra);
+            }
 
-// Categories
+            table[i] = row
+        }
 
-const getAllCategories = async () => {
-    const res = await fetch(`${url}&c=categoria&t=listar`);
-    const data = await res.json();
+        data.addRows(table)
 
-    return data.dados;
-}
+        const options = {
+            hAxis: {
+                title: 'Tempo'
+            },
+            vAxis: {
+                title: 'Valor'
+            }
+        };
 
-const insertCategory = async (name) => {
-    const res = await fetch(`${url}&c=categoria&t=inserir&nome=${name}`);
-    const data = await res.json();
-
-    return data.dados;
-}
-
-const updateCategory = async (id, name) => {
-    const res = await fetch(`${url}&c=categoria&t=alterar&id=${id}&nome=${name}`);
-    const data = await res.json();
-
-    return data.dados;
-}
-
-const deleteCategory = async (id) => {
-    const res = await fetch(`${url}&c=categoria&t=remover&id=${id}`);
-    const data = await res.json();
-
-    return data.dados;
+        let chart
+        if (select == true) {
+            chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        } else {
+            chart = new google.visualization.Table(document.getElementById('chart_div'));
+        }
+        chart.draw(data, options);
+    });
 }
