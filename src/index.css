@@ -58,3 +58,7 @@ body {
 .conteudo {
 	text-align: center;
 }
+
+input {
+	color: #1d17cf;
+}

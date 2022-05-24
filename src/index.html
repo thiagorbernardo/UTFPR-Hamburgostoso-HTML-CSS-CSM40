@@ -1,71 +1,70 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="index.js"></script>
-    <script>
-        google.charts.load('current', { packages: ['corechart', 'table'] });
-        google.charts.setOnLoadCallback(drawLineChart);
-    </script>
-    <title>
-        Cotação
-    </title>
+	<link rel="stylesheet" href="index.css">
+	<script src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="index.js"></script>
+	<script>
+		google.charts.load('current', { packages: ['corechart', 'table'] });
+		google.charts.setOnLoadCallback(drawLineChart);
+	</script>
+	<title>
+		Cotação
+	</title>
 </head>
 
 <body>
-    <div class="main">
-			<div id= "logo">
+	<div class="main">
+		<div id="logo">
 			<img src="img/logo2.png"></img>
-			</div>
-	<div id=menu>
+		</div>
+		<div id=menu>
 			<a href="index.html" class=menuitem>Home</a>
 			<a href="sobre.html" class=menuitem>Sobre</a>
 			<a href="help.html" class=menuitem>Ajuda</a>
+		</div>
+		<div class=conteudo>
+			<h2>Home</h2>
+			<p>Tela inicial</p>
+		</div>
+		<fieldset>
+			<legend>Escolha as moedas:</legend>
+
+			<div>
+				<input type="checkbox" id="USD" name="USD" checked>
+				<label for="USD">Dólar dos Estados Unidos</label>
 			</div>
-        <div class=conteudo>
-            <h2>Home</h2>
-            <p>Tela inicial</p>
-        </div>
-	<fieldset>
-	    <legend>Escolha as moedas:</legend>
 
-	    <div>
-	      <input type="checkbox" id="USD" name="USD"
-		     checked>
-	      <label for="USD">USD</label>
-	    </div>
+			<div>
+				<input type="checkbox" id="EUR" name="EUR">
+				<label for="EUR">Euro</label>
+			</div>
 
-	    <div>
-	      <input type="checkbox" id="EUR" name="EUR">
-	      <label for="EUR">EUR</label>
-	    </div>
-		
-	    <div>
-	      <input type="checkbox" id="GBP" name="GBP">
-	      <label for="GBP">GBP</label>
-	    </div>
-		
-	</fieldset>
-	
-	<fieldset>
-	    <legend>Escolha as datas:</legend>
+			<div>
+				<input type="checkbox" id="GBP" name="GBP">
+				<label for="GBP">Libra Esterlina</label>
+			</div>
 
-	    <div>
-	      <input type="date" id="dataInicio" name="dataInicio">
-	      <label for="dataInicio">Data Início</label>
-	    </div>
+		</fieldset>
 
-	    <div>
-	      <input type="date" id="dataFim" name="dataFim">
-	      <label for="dataFim">Data Fim</label>
-	    </div>
-	
-		
-	</fieldset>
-        <div id="chart_div" />
-    </div>
-    </div>
+		<fieldset>
+			<legend>Escolha as datas:</legend>
+
+			<div>
+				<input type="date" id="dataInicio" name="dataInicio">
+				<label for="dataInicio">Data Início</label>
+			</div>
+
+			<div>
+				<input type="date" id="dataFim" name="dataFim">
+				<label for="dataFim">Data Fim</label>
+			</div>
+
+
+		</fieldset>
+		<div id="chart_div" />
+	</div>
+	</div>
 </body>
 
 </html>
