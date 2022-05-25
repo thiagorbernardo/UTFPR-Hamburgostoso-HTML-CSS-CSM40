@@ -2,11 +2,12 @@
 
 <head>
 	<link rel="stylesheet" href="index.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://www.gstatic.com/charts/loader.js"></script>
 	<script src="index.js"></script>
 	<script>
 		google.charts.load('current', { packages: ['corechart', 'table'] });
-		google.charts.setOnLoadCallback(drawLineChart);
+		google.charts.setOnLoadCallback(initialize);
 	</script>
 	<title>
 		Cotação
@@ -29,7 +30,6 @@
 		</div>
 		<fieldset>
 			<legend>Escolha as moedas:</legend>
-
 			<div>
 				<input type="checkbox" id="USD" name="USD" checked>
 				<label for="USD">Dólar dos Estados Unidos</label>
@@ -46,7 +46,7 @@
 			</div>
 
 		</fieldset>
-
+		<br />
 		<fieldset>
 			<legend>Escolha as datas:</legend>
 
@@ -59,12 +59,13 @@
 				<input type="date" id="dataFim" name="dataFim">
 				<label for="dataFim">Data Fim</label>
 			</div>
-			
-
 		</fieldset>
-		<button class="button-4" type="submit">Buscar</button>
+		<br />
+		<div style="display: flex; justify-content: center; align-items: center;">
+			<button class="button-4" id="button">Buscar</button>
+		</div>
+		<br />
 		<div id="chart_div" />
-	</div>
 	</div>
 </body>
 

@@ -32,15 +32,38 @@ const getCoinsPriceByPeriod = async (coins, startDate, endDate) => {
 
     return result;
 }
-const select = true
-const drawLineChart = () => {
-    const coins = ["USD", "GBP", "EUR"]
+
+const formatDate = (date) => {
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+
+    if (day < 10) {
+        day = "0" + day
+    }
+
+    if (month < 10) {
+        month = "0" + month
+    }
+    
+    const year = date.getFullYear()
+
+    return `${month}-${day}-${year}`
+}
+
+console.log(formatDate(new Date()))
+
+const drawLineChart = (coins, startDate, endDate) => {
+    const startDateString = formatDate(startDate)
+    const endDateDateString = formatDate(endDate)
+    console.log(startDateString)
+    console.log(endDateDateString)
+
     const data = new google.visualization.DataTable();
     data.addColumn('date', 'data');
 
     coins.forEach(coin => data.addColumn('number', coin));
 
-    getCoinsPriceByPeriod(coins, "05-16-2021", "05-20-2022").then(prices => {
+    getCoinsPriceByPeriod(coins, startDateString, endDateDateString).then(prices => {
         const table = [];
 
         const sizePerCoin = prices.length / coins.length;
@@ -72,5 +95,37 @@ const drawLineChart = () => {
             chart = new google.visualization.Table(document.getElementById('chart_div'));
         }
         chart.draw(data, options);
+    });
+}
+
+const initialize = () => {
+    const coinsToSearch = []
+    $(document).ready(function () {
+        $("#button").on("click", function () {
+            coins.forEach(coin => {
+                const checked = document.getElementById(coin.symbol).checked
+                if (checked) {
+                    coinsToSearch.push(coin.symbol)
+                }
+            })
+
+            let startDate = document.getElementById("dataInicio").value
+            let endDate = document.getElementById("dataFim").value
+
+            if (!startDate || !endDate) {
+                alert("Você precisa selecionar a data de inicio e fim");
+                return;
+            }
+
+            startDate = new Date(startDate)
+            endDate = new Date(endDate)
+
+            if (startDate > endDate) {
+                alert("A data de inicio não pode ser maior que a data final");
+                return;
+            }
+
+            drawLineChart(coinsToSearch, startDate, endDate)
+        });
     });
 }
