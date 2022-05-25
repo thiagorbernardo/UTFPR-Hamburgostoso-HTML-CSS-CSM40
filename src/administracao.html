@@ -1,6 +1,8 @@
 <html>
     <head>
 		<link rel = "stylesheet" href = "index.css">
+		<script src="index.js"></script>
+		<script src="admin/admin.js"></script>
         <title>
             Administração
         </title>
@@ -23,10 +25,9 @@
 			<div class = conteudo>
 			<h2>Administração</h2>
 			<p>Dados da Administração</p>
-      <input type='button' onclick="generateMenu()">Listar Categorias</input>
+      		<input type='button' onclick="generateCategories()">Listar Categorias</input>
+			<ul id="categoriesList" ></ul>
 			</div>
 		</div>
-
-
     </body>
 </html>
