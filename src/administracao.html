@@ -1,6 +1,7 @@
 <html>
     <head>
 		<link rel = "stylesheet" href = "index.css">
+    <link rel = "stylesheet" href = "admin.css">
 		<script src="index.js"></script>
 		<script src="admin/admin.js"></script>
         <title>
@@ -9,24 +10,31 @@
     </head>
     <body>
         <div class= "main">
-			<div id= "logo">
-			<img src="img/logo2.png"></img>
-			</div>
+    			<div id= "logo">
+    			     <img src="img/logo2.png"></img>
+			    </div>
 			</br>
 			<div id=menu>
-			<a href="index.html" class=menuitem>Home</a>
-			<a href="cardapio.html" class=menuitem>Cardápio</a>
-			<a href="sobre.html" class=menuitem>Sobre</a>
-			<a href="contato.html" class=menuitem>Contato</a>
-			<a href="pedidos.html" class=menuitem>Pedidos</a>
-			<a href="administracao.html" class=menuitem>Administração</a>
-			<a href="formulario.html" class=menuitem>Cadastro</a>
+  			<a href="index.html" class=menuitem>Home</a>
+  			<a href="cardapio.html" class=menuitem>Cardápio</a>
+  			<a href="sobre.html" class=menuitem>Sobre</a>
+  			<a href="contato.html" class=menuitem>Contato</a>
+  			<a href="pedidos.html" class=menuitem>Pedidos</a>
+  			<a href="administracao.html" class=menuitem>Administração</a>
+  			<a href="formulario.html" class=menuitem>Cadastro</a>
 			</div>
 			<div class = conteudo>
-			<h2>Administração</h2>
-			<p>Dados da Administração</p>
-      		<input type='button' onclick="generateCategories()">Listar Categorias</input>
-			<ul id="categoriesList" ></ul>
+  			<h2>Administração</h2>
+  			<p>Dados da Administração</p>
+        <div class = div1>
+          <button class="button-4" id="button" onclick="generateCategories()">Listar Categorias</button>
+          <button class="button-4" id="button" onclick="generateProducts()">Listar Produtos</button>
+          <button class="button-4" id="button" onclick="generateCategoryForm()">Inserir Categoria</button>
+          <button class="button-4" id="button" onclick="generateProductForm()">Inserir Produto</button>
+        </div>
+        </br>
+  			<ul id="categoriesList" ></ul>
+        <ul id="productsList" ></ul>
 			</div>
 		</div>
     </body>
