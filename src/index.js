@@ -44,19 +44,15 @@ const formatDate = (date) => {
     if (month < 10) {
         month = "0" + month
     }
-    
+
     const year = date.getFullYear()
 
     return `${month}-${day}-${year}`
 }
 
-console.log(formatDate(new Date()))
-
-const drawLineChart = (coins, startDate, endDate) => {
+const drawLineChart = (coins, startDate, endDate, formatIsTable) => {
     const startDateString = formatDate(startDate)
     const endDateDateString = formatDate(endDate)
-    console.log(startDateString)
-    console.log(endDateDateString)
 
     const data = new google.visualization.DataTable();
     data.addColumn('date', 'data');
@@ -89,17 +85,21 @@ const drawLineChart = (coins, startDate, endDate) => {
         };
 
         let chart
-        if (select == true) {
-            chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        } else {
+        if (formatIsTable) {
             chart = new google.visualization.Table(document.getElementById('chart_div'));
+        } else {
+            chart = new google.visualization.LineChart(document.getElementById('chart_div'));
         }
         chart.draw(data, options);
     });
 }
 
 const initialize = () => {
+    document.getElementById("dataInicio").max = new Date().toISOString().split("T")[0];
+    document.getElementById("dataFim").max = new Date().toISOString().split("T")[0];
+
     const coinsToSearch = []
+
     $(document).ready(function () {
         $("#button").on("click", function () {
             coins.forEach(coin => {
@@ -125,7 +125,9 @@ const initialize = () => {
                 return;
             }
 
-            drawLineChart(coinsToSearch, startDate, endDate)
+            const table = document.getElementById('table').checked
+
+            drawLineChart(coinsToSearch, startDate, endDate, table)
         });
     });
 }
