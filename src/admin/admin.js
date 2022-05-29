@@ -23,10 +23,13 @@ const generateProducts = async (id, name) => {
     getProductsByCategory(id).then(products => {
         console.log(products)
 
-		const content = document.getElementById("content");
-		content.innerHTML = `<h2>Produtos da Categoria ${name}</h2>`;
+        const content = document.getElementById("content");
+        const title = document.createElement('h2');
+        title.innerHTML = `<h2>Produtos da Categoria ${name}</h2>`;
+        content.replaceChild(title, content.firstChild)
 
         const menu = document.getElementById('categories');
+        console.log(menu);
 
         products.forEach(product => {
             const a = document.createElement('a');
