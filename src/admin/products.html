@@ -4,7 +4,11 @@
 	<link rel="stylesheet" href="../index.css">
 	<link rel="stylesheet" href="admin.css">
 	<script src="../index.js"></script>
-	<script src="admin/admin.js"></script>
+	<script src="admin.js"></script>
+	<script>
+        const urlParams = new URLSearchParams(window.location.search);
+		generateProducts(urlParams.get('id'));
+	</script>
 	<title>
 		Administração
 	</title>
@@ -27,13 +31,7 @@
 		</div>
 		<div class=conteudo>
 			<h2>Administração</h2>
-			<p>Dados da Administração</p>
-			<div class=div1>
-				<button class="button-4" id="button" onclick="generateCategories()">Listar Categorias</button>
-				<button class="button-4" id="button" onclick="generateProducts()">Listar Produtos</button>
-				<button class="button-4" id="button" onclick="generateCategoryForm()">Inserir Categoria</button>
-				<button class="button-4" id="button" onclick="generateProductForm()">Inserir Produto</button>
-			</div>
+			<p>Produtos da Categoria </p>
 			</br>
 			<div id="categories">
 			</div>
