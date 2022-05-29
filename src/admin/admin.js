@@ -6,7 +6,7 @@ const generateCategories = async () => {
         categories.forEach(category => {
             const a = document.createElement('a');
             a.className = "card";
-            a.href = `products.html?id=${category.id}&name=${category.nome}`;
+            a.href = "products.html?id=" + category.id;
             a.innerHTML = `<h2>${category.nome}</h2>
             <p>${category.id}</p>`;
             menu.appendChild(a);
@@ -19,17 +19,10 @@ const formatter = new Intl.NumberFormat('pt-BR', {
     currency: 'BRL',
 });
 
-const generateProducts = async (id, name) => {
+const generateProducts = async (id) => {
     getProductsByCategory(id).then(products => {
         console.log(products)
-
-        const content = document.getElementById("content");
-        const title = document.createElement('h2');
-        title.innerHTML = `<h2>Produtos da Categoria ${name}</h2>`;
-        content.replaceChild(title, content.firstChild)
-
         const menu = document.getElementById('categories');
-        console.log(menu);
 
         products.forEach(product => {
             const a = document.createElement('a');
@@ -51,9 +44,9 @@ const generateProducts = async (id, name) => {
 
 
 const inserirCategoria = async () => {
-    insertCategory(getElementById('form_categoria'));
+    insertCategory(getElementById('form_categoria').value);
 }
 
 const inserirProduto = async () => {
-    insertProduct(getElementById('form_name'), getElementById('form_code'), getElementById('form_description'), getElementById('form_price'), getElementById('form_weight'), getElementById('form_category'));
+    insertProduct(getElementById('form_name').value, getElementById('form_code').value, getElementById('form_description').value, getElementById('form_price').value, getElementById('form_weight').value, getElementById('form_category').value);
 }
