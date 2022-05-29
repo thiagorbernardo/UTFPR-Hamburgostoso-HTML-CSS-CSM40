@@ -41,10 +41,12 @@ const generateProducts = async (id) => {
     })
 }
 
-const generateProductForm = async (id) => {
 
+
+const inserirCategoria = async () => {
+    insertCategory(getElementById('form_categoria'));
 }
 
-const generateCategoryForm = async () => {
-
+const inserirProduto = async () => {
+    insertProduct(getElementById('form_name'), getElementById('form_code'), getElementById('form_description'), getElementById('form_price'), getElementById('form_weight'), getElementById('form_category'));
 }

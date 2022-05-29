@@ -32,14 +32,81 @@
 			<div id="categories">
 			</div>
 
-			<a href="#abrirModal">Open Modal</a>
+			<a href="#inserirProduto">Inserir Produto</a>
+			
+			<a href="#inserirCategoria">Inserir Categoria</a>
 
-			<div id="abrirModal" class="modal">
+			<div id="inserirProduto" class="modal">
 				<a href="#fechar" title="Fechar" class="fechar">x</a>
-				<h2>Janela Modal</h2>
-				<p>Esta é uma simples janela de modal.</p>
-				<p>Você pode fazer qualquer coisa aqui, página de Login, pop-ups, ou formulários</p>
+				<form action="index.html" method="post">
+					<div>
+						<label for="form_code">Código:</label>
+						</br>
+						<input type="text" id="form_code" />
+					</div>
+					</br>
+					<div>
+						<label for="form_category">ID Categoria:</label>
+						</br>
+						<input type="number" id="form_category" />
+					</div>
+					</br>
+					<div>
+						<label for="form_name">Nome:</label>
+						</br>
+						<input type="text" id="form_name" />
+					</div>
+					</br>
+					<div>
+						<label for="form_description">Descrição:</label>
+						</br>
+						<input type="text" id="form_description" />
+					</div>
+					</br>
+					<div>
+						<label for="form_price">Preço:</label>
+						</br>
+						<input type="text" id="form_price" />
+					</div>
+					</br>
+					<div>
+						<label for="form_image">Imagem:</label>
+						</br>
+						<input type="text" id="form_image" />
+					</div>
+					</br>
+					<div>
+						<label for="form_weight">Peso:</label>
+						</br>
+						<input type="text" id="form_weight" />
+					</div>
+					</br>
+	
+					<div class="button">
+						<button class="button-4" type="submit" onclick="inserirProduto()">Submit</button>
+						<button class="button-4" type="reset">Reset</button>
+					</div>
+	
+				</form>
 			</div>
+
+			<div id="inserirCategoria" class="modal">
+				<a href="#fechar" title="Fechar" class="fechar">x</a>
+				<form action="index.html" method="post">
+					<div>
+						<label for="form_categoria">Nome da Categoria:</label>
+						</br>
+						<input type="text" id="form_categoria" />
+					</div>
+					</br>
+					<div class="button">
+						<button class="button-4" type="submit" onclick="inserirCategoria()">Submit</button>
+						<button class="button-4" type="reset">Reset</button>
+					</div>
+	
+				</form>
+			</div>
+
 		</div>
 	</div>
 </body>
