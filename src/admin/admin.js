@@ -36,6 +36,7 @@ const generateProducts = async (id, name) => {
             a.className = "card";
             a.href = "product.html?id=" + product.id;
             a.innerHTML = `<h2>${product.nome}</h2>
+            <img src="../img/avatar.png" alt="Avatar" style="width:50%">
             <p>${product.descricao}</p>
             <p>ID: ${product.id}</p>
             <p>Codigo: ${product.codigo}</p>
