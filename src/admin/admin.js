@@ -6,7 +6,7 @@ const generateCategories = async () => {
         categories.forEach(category => {
             const a = document.createElement('a');
             a.className = "card";
-            a.href = "products.html?id=" + category.id;
+            a.href = `products.html?id=${category.id}&name=${category.nome}`;
             a.innerHTML = `<h2>${category.nome}</h2>
             <p>${category.id}</p>`;
             menu.appendChild(a);
@@ -19,9 +19,13 @@ const formatter = new Intl.NumberFormat('pt-BR', {
     currency: 'BRL',
 });
 
-const generateProducts = async (id) => {
+const generateProducts = async (id, name) => {
     getProductsByCategory(id).then(products => {
         console.log(products)
+
+		const content = document.getElementById("content");
+		content.innerHTML = `<h2>Produtos da Categoria ${name}</h2>`;
+
         const menu = document.getElementById('categories');
 
         products.forEach(product => {

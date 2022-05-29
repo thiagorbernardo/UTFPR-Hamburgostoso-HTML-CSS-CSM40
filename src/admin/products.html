@@ -7,7 +7,7 @@
 	<script src="admin.js"></script>
 	<script>
         const urlParams = new URLSearchParams(window.location.search);
-		generateProducts(urlParams.get('id'));
+		generateProducts(urlParams.get('id'), urlParams.get('name'));
 	</script>
 	<title>
 		Administração
@@ -29,9 +29,7 @@
 			<a href="../admin/" class=menuitem>Administração</a>
 			<a href="../formulario/" class=menuitem>Cadastro</a>
 		</div>
-		<div class=conteudo>
-			<h2>Administração</h2>
-			<p>Produtos da Categoria </p>
+		<div id="content">
 			</br>
 			<div id="categories">
 			</div>
