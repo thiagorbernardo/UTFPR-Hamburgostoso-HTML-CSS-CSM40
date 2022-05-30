@@ -50,12 +50,12 @@
 
 .modal {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  top: 50;
+  right: 400;
+  bottom: 350;
+  left: 400;
   font-family: Arial, Helvetica, sans-serif;
-  background: rgba(0,0,0,0.8);
+  background: rgba(248, 248, 248, 0.89);
   z-index: 99999;
   opacity:0;
   -webkit-transition: opacity 400ms ease-in;
@@ -88,5 +88,5 @@
   background: #ff4545;
   border-radius: 50%;
   font-size: 16px;
-  color: #27ca3c;
+  color: #00ff22;
 }
