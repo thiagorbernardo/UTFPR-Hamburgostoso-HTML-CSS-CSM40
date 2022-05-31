@@ -71,3 +71,9 @@ const inserirProduto = async () => {
 const atualizarProduto = async () => {
     
 }
+
+const excluirCategoria = async () => {
+    console.log(urlParams.get('id'));
+    deleteCategory(urlParams.get('id'));
+    window.location.href = "index.html";
+}
