@@ -27,7 +27,7 @@ const generateProducts = async (id) => {
         products.forEach(product => {
             const a = document.createElement('a');
             a.className = "card";
-            a.href = "product.html?id=" + product.id;
+            a.href = "#updateProduto";
             a.innerHTML = `<h2>${product.nome}</h2>
             <img src="../img/avatar.png" alt="Avatar" style="width:50%">
             <p>${product.descricao}</p>
@@ -42,12 +42,32 @@ const generateProducts = async (id) => {
     })
 }
 
-
+const generateCategoriesForm = async() => {
+    getAllCategories().then(categories => {
+        console.log(categories)
+        const categorias = document.getElementById('category_options')
+        categories.forEach(category => {
+            const a = document.createElement('option');
+            a.value = category.id;
+            a.href = "products.html?id=" + category.id;
+            a.innerHTML = category.nome
+            categorias.appendChild(a);
+        });
+        
+    })
+}
 
 const inserirCategoria = async () => {
-    insertCategory(getElementById('form_categoria').value);
+    elemento = document.getElementById('form_categoria').value;
+    console.log(elemento);
+    insertCategory(document.getElementById('form_categoria').value);
+
 }
 
 const inserirProduto = async () => {
-    insertProduct(getElementById('form_name').value, getElementById('form_code').value, getElementById('form_description').value, getElementById('form_price').value, getElementById('form_weight').value, getElementById('form_category').value);
+    insertProduct(document.getElementById('form_name').value, document.getElementById('form_code').value, document.getElementById('form_description').value, document.getElementById('form_price').value, document.getElementById('form_weight').value, document.getElementById('category_options').value);
+}
+
+const atualizarProduto = async () => {
+    
 }
