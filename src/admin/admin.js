@@ -11,6 +11,16 @@ const generateCategories = async () => {
             <p>${category.id}</p>`;
             menu.appendChild(a);
         });
+    }).then(categories => {
+        console.log(categories)
+        const categorias = document.getElementById('category_options')
+        categories.forEach(category => {
+            const a = document.createElement('option');
+            a.value = category.id;
+            a.href = "products.html?id=" + category.id;
+            a.innerHTML = category.nome
+            categorias.appendChild(a);
+        });
     })
 }
 
@@ -54,25 +64,12 @@ const generateProducts = async (id) => {
     })
 }
 
-const generateCategoriesForm = async() => {
-    getAllCategories().then(categories => {
-        console.log(categories)
-        const categorias = document.getElementById('category_options')
-        categories.forEach(category => {
-            const a = document.createElement('option');
-            a.value = category.id;
-            a.href = "products.html?id=" + category.id;
-            a.innerHTML = category.nome
-            categorias.appendChild(a);
-        });
-        
-    })
-}
-
 const inserirCategoria = async () => {
     elemento = document.getElementById('form_categoria').value;
-    console.log(elemento);
-    insertCategory(document.getElementById('form_categoria').value);
+
+    insertCategory(document.getElementById('form_categoria').value).then(() => {
+        window.location.href = "index.html";
+    });
 
 }
 
@@ -85,7 +82,12 @@ const atualizarProduto = async () => {
 }
 
 const excluirCategoria = async () => {
-    console.log(urlParams.get('id'));
-    deleteCategory(urlParams.get('id'));
-    window.location.href = "index.html";
+    const products = document.getElementById('categories');
+    if (products.childNodes.length > 1) {
+        alert("Você não pode apagar uma categoria que ainda contenha produtos.")
+        return
+    }
+    deleteCategory(urlParams.get('id')).then(() => {
+        window.location.href = "index.html";
+    });
 }
