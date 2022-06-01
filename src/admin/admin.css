@@ -49,6 +49,7 @@
 }
 
 .modal {
+  align-items: center;
   position: fixed;
   top: 50;
   right: 400;
