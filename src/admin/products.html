@@ -6,7 +6,7 @@
 	<script src="../index.js"></script>
 	<script src="admin.js"></script>
 	<script>
-        const urlParams = new URLSearchParams(window.location.search);
+		const urlParams = new URLSearchParams(window.location.search);
 		generateProducts(urlParams.get('id'), urlParams.get('name'));
 	</script>
 	<title>
@@ -32,15 +32,14 @@
 		<div id="content">
 			<h2></h2>
 			</br>
-			<div id="categories">
-			</div>
+			<div id="categories" />
 		</div>
 		<button class="button-4" onclick="excluirCategoria()">Excluir Categoria</button>
 		<div id="updateProduto" class="modal">
 			<a href="#fechar" title="Fechar" class="fechar">x</a>
 			<h2>Insira os dados</h2>
 			<form action="">
-				<div >
+				<div>
 					<label for="form_code">Código:</label>
 					</br>
 					<input type="text" id="form_code" />
@@ -48,8 +47,8 @@
 				</br>
 				<div>
 					<label for="form_category">ID Categoria:</label>
-				</br>
-					<select id = 'category_options'>
+					</br>
+					<select id='category_options'>
 					</select>
 					</br>
 				</div>
