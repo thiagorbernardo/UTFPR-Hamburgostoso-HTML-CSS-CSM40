@@ -8,6 +8,7 @@
 	<script>
         const urlParams = new URLSearchParams(window.location.search);
 		generateProducts(urlParams.get('id'), urlParams.get('name'));
+		generateCategoriesForm();
 	</script>
 	<title>
 		Administração
@@ -47,7 +48,7 @@
 				</div>
 				</br>
 				<div>
-					<label for="form_category">ID Categoria:</label>
+					<label for="form_category">Categoria:</label>
 				</br>
 					<select id = 'category_options'>
 					</select>

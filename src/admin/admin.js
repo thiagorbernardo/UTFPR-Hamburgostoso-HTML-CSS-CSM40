@@ -27,7 +27,19 @@ const generateProducts = async (id) => {
         products.forEach(product => {
             const a = document.createElement('a');
             a.className = "card";
-            a.href = "#updateProduto";
+            a.href = `?id=${id}&product_id=${product.id}#updateProduto`;
+            a.onclick = () => {
+
+                document.getElementById('form_code').placeholder = product.codigo;
+                document.getElementById('form_name').placeholder = product.nome;
+                document.getElementById('form_description').placeholder = product.descricao;
+                document.getElementById('form_price').placeholder = product.codigo;
+                document.getElementById('form_weight').placeholder = product.peso;
+                document.getElementById('form_category').placeholder = product.categoria;
+                
+                //document.getElementById('form_image').innerHTML = product.image;
+                
+            }
             a.innerHTML = `<h2>${product.nome}</h2>
             <img src="../img/avatar.png" alt="Avatar" style="width:50%">
             <p>${product.descricao}</p>
@@ -69,7 +81,7 @@ const inserirProduto = async () => {
 }
 
 const atualizarProduto = async () => {
-    
+    updateProduct(document.getElementById('form_name').value, document.getElementById('form_code').value, document.getElementById('form_description').value, document.getElementById('form_price').value, document.getElementById('form_weight').value, document.getElementById('category_options').value);
 }
 
 const excluirCategoria = async () => {
