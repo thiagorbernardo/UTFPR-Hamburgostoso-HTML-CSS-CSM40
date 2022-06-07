@@ -28,7 +28,7 @@ const generateCategoriesForm = async () => {
             const a = document.createElement('option');
             a.value = category.id;
             a.href = "products.html?id=" + category.id;
-            a.innerHTML = category.nome
+            a.innerHTML = category.nome;
             categorias.appendChild(a);
         });
     })
@@ -114,4 +114,8 @@ const atualizarProduto = async () => {
     ).then(() => {
         window.location.href = "products.html?id=" + urlParams.get('id');
     });
+}
+
+const excluirProduto = async () => {
+   
 }

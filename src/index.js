@@ -33,6 +33,12 @@ const updateProduct = async (id, name, code, description, price, weight, categor
     return data.dados;
 }
 
+const deleteProduct = async (id) => {
+    const res = await fetch(`${url}&c=produto&t=remover&id=${id}`, postOptions);
+    const data = await res.json();
+
+    return data.dados;
+}
 // Categories
 
 const getAllCategories = async () => {
