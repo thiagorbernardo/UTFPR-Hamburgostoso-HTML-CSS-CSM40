@@ -68,3 +68,8 @@ const deleteCategory = async (id) => {
 
     return data.dados;
 }
+
+const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+});
