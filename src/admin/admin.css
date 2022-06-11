@@ -16,9 +16,8 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 60%;
-  height: 300px;
 }
+
 .card:hover,
 .card:focus,
 .card:active {
@@ -40,9 +39,6 @@
 
 
 #categories {
-  /* display: flex;
-  flex-wrap: wrap; */
-  
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1rem;

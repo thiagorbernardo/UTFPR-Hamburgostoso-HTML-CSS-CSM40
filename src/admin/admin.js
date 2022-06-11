@@ -11,7 +11,7 @@ const generateCategories = async () => {
         categories.forEach(category => {
             const a = document.createElement('a');
             a.className = "card";
-            a.href = "products.html?id=" + category.id;
+            a.href = `products.html?id=${category.id}&name=${category.nome}`;
             a.innerHTML = `<h2>${category.nome}</h2>
             <p>${category.id}</p>`;
             menu.appendChild(a);
@@ -27,7 +27,7 @@ const generateCategoriesForm = async () => {
         categories.forEach(category => {
             const a = document.createElement('option');
             a.value = category.id;
-            a.href = "products.html?id=" + category.id;
+            a.href = `products.html?id=${category.id}`;
             a.innerHTML = category.nome;
             categorias.appendChild(a);
         });
@@ -53,30 +53,33 @@ const excluirCategoria = async () => {
     });
 }
 
-const generateProducts = async (id) => {
+const generateProducts = async (id, name) => {
     getProductsByCategory(id).then(products => {
         console.log(products)
+
+        const title = document.getElementById("categoryName");
+        title.innerHTML = `${title.innerHTML} ${urlParams.get('name')}`;
+
         const menu = document.getElementById('categories');
 
         products.forEach(product => {
             const a = document.createElement('a');
             a.className = "card";
-            a.href = `?id=${id}#updateProduto`;
+            a.href = `?id=${id}&name=${name}#updateProduto`;
             a.onclick = () => {
                 document.getElementById('selectedProduct').value = product.id;
-console.log(document.getElementById('selectedProduct'))
-console.log(document.getElementById('selectedProduct').value)
+                console.log(document.getElementById('selectedProduct'))
+                console.log(document.getElementById('selectedProduct').value)
                 document.getElementById('form_code').value = product.codigo;
                 document.getElementById('form_name').value = product.nome;
                 document.getElementById('form_description').value = product.descricao;
-                document.getElementById('form_price').value = product.codigo;
+                document.getElementById('form_price').value = product.preco;
                 document.getElementById('form_weight').value = product.peso;
                 document.getElementById('category_options').value = product.categoria;
-                //TODO: adicionar imagem
-                //document.getElementById('form_image').value = product.image;
+                document.getElementById('form_image').value = product.image ?? "";
             }
             a.innerHTML = `<h2>${product.nome}</h2>
-            <img src="../img/avatar.png" alt="Avatar" style="width:50%">
+            <img src="${product.image ?? "../img/avatar.png"}" alt="${product.descricao}" style="width:50%">
             <p>${product.descricao}</p>
             <p>ID: ${product.id}</p>
             <p>Codigo: ${product.codigo}</p>
@@ -117,5 +120,5 @@ const atualizarProduto = async () => {
 }
 
 const excluirProduto = async () => {
-   
+
 }
