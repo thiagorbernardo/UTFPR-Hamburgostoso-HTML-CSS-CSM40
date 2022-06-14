@@ -3,6 +3,8 @@
 <head>
 	<link rel="stylesheet" href="../index.css">
 	<link rel="stylesheet" href="formulario.css">
+	<script src="../index.js"></script>
+	<script src="formulario.js"></script>
 	<title>
 		Formulário
 	</title>
@@ -40,13 +42,13 @@
 				<div>
 					<label for="cep">CEP:</label>
 					</br>
-					<input type="text" id="cep" />
+					<input name="cep" type="text" id="cep" onblur="pesquisacep(this.value);"/>
 				</div>
 				</br>
 				<div>
-					<label for="logradouro">Logradouro (Rua):</label>
+					<label for="rua">Logradouro (Rua):</label>
 					</br>
-					<input type="text" id="logradouro" />
+					<input type="text" id="rua" />
 				</div>
 				</br>
 				<div>
@@ -68,9 +70,9 @@
 				</div>
 				</br>
 				<div>
-					<label for="localidade">Localidade (Cidade):</label>
+					<label for="cidade">Localidade (Cidade):</label>
 					</br>
-					<input type="text" id="localidade" />
+					<input type="text" id="cidade" />
 				</div>
 				</br>
 				<div>
