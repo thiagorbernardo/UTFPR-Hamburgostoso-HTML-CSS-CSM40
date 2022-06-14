@@ -36,13 +36,13 @@
 				<div>
 					<label for="cpf">CPF:</label>
 					</br>
-					<input type="number" id="cpf" pattern="([0-9]{3})\.([0-9]{3})\.([0-9]{3})-([0-9]{2})" />
+					<input type="text" id="cpf" oninput="mascara(this)"/>
 				</div>
 				</br>
 				<div>
 					<label for="cep">CEP:</label>
 					</br>
-					<input name="cep" type="text" id="cep" onblur="pesquisacep(this.value);"/>
+					<input name="cep" type="number" id="cep" onblur="pesquisacep(this.value);" maxlength="9"/>
 				</div>
 				</br>
 				<div>
