@@ -69,6 +69,13 @@ const deleteCategory = async (id) => {
     return data.dados;
 }
 
+const insertOrder = async (nome, cpf, cep, rua, numero, complemento, bairro, cidade, uf) => {
+    const res = await fetch(`${url}&c=pedido&t=inserir&nome=${nome}&cpf=${cpf}&cep=${cep}&rua=${rua}&numero=${numero}&complemento=${complemento}&bairro=${bairro}&cidade=${cidade}&uf=${uf}`, postOptions);
+    const data = await res.json();
+
+    return data.dados;
+}
+
 const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',

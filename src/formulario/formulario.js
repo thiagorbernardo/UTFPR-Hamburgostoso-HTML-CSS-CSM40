@@ -80,3 +80,46 @@ function mascara(i){
     if (v.length == 11) i.value += "-";
  
  }
+
+const validateForm = async() => {
+    if (document.forms["userForm"]["name"].value == "") {
+        alert("Insira um nome");
+        return false;
+    }
+    if (document.forms["userForm"]["cpf"].value.length < 11) {
+        alert("Coloque um cpf válido");
+        return false;
+    } 
+    if (document.forms["userForm"]["cep"].value.length<8){
+        alert("Coloque um cep válido");
+        return false;
+    }
+    if(document.forms["userForm"]["numero"].value ==""){
+        alert("Coloque o número do logradouro");
+        return false;
+    }
+    if(document.forms["userForm"]["cidade"].value == ""){
+        alert("Coloque a cidade");
+        return false;
+    }
+    if(document.forms["userForm"]["uf"].value == "----"){
+        alert("Coloque um estado");
+        return false;
+    }
+    
+ }
+
+ const inserirPedido = async () => {
+    validateForm();
+    insertOrder(
+        document.getElementById('name').value,
+        document.getElementById('cpf').value,
+        document.getElementById('cep').value,
+        document.getElementById('rua').value,
+        document.getElementById('numero').value,
+        document.getElementById('complemento').value,
+        document.getElementById('bairro').value,
+        document.getElementById('cidade').value,
+        document.getElementById('uf').value,
+    );
+}
