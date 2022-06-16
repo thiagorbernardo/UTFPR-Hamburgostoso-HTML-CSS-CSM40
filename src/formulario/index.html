@@ -26,143 +26,139 @@
 			<a href="" class="menuitem">Cadastro</a>
 		</div>
 		<div class=conteudo>
-			<div class = conteudo2>
-			<div class = form>
-			<form name = "userForm">
-				<div>
-					<label for="name" class="lbl">Nome:</label>
-					</br>
-					<input type="text" id="name" />
-				</div>
-				</br>
-				<div>
-					<label for="cpf" class="lbl">CPF:</label>
-					</br>
-					<input type="text" id="cpf" maxlength="11"/>
-				</div>
-				</br>
-				<div>
-					<label for="cep" class="lbl">CEP:</label>
-					</br>
-					<input name="cep" type="number" id="cep" onblur="pesquisacep(this.value);" maxlength="9"/>
-				</div>
-				</br>
-				<div>
-					<label for="rua" class="lbl">Logradouro (Rua):</label>
-					</br>
-					<input type="text" id="rua" />
-				</div>
-				</br>
-				<div>
-					<label for="numero" class="lbl">Número:</label>
-					</br>
-					<input type="number" id="numero" />
-				</div>
-				</br>
-				<div>
-					<label for="complemento" class="lbl">Complemento:</label>
-					</br>
-					<input type="text" id="complemento" />
-				</div>
-				</br>
-				<div>
-					<label for="bairro" class="lbl">Bairro:</label>
-					</br>
-					<input type="text" id="bairro" />
-				</div>
-				</br>
-				<div>
-					<label for="cidade" class="lbl">Localidade (Cidade):</label>
-					</br>
-					<input type="text" id="cidade" />
-				</div>
-				</br>
-				<div>
-					<label for="uf" class="lbl">UF:</label>
-					</br>
-					<select name="uf" id="uf">
-					<option>----</option>
-					<option value="AC">Acre</option>
-					<option value="AL">Alagoas</option>
-					<option value="AP">Amapá</option>
-					<option value="AM">Amazonas</option>
-					<option value="BA">Bahia</option>
-					<option value="CE">Ceará</option>
-					<option value="DF">Distrito Federal</option>
-					<option value="ES">Espírito Santos</option>
-					<option value="GO">Goiás</option>
-					<option value="MA">Maranhão</option>
-					<option value="MT">Mato Grosso</option>
-					<option value="MS">Mato Grosso do Sul</option>
-					<option value="MG">Minas Gerais</option>
-					<option value="PA">Pará</option>
-					<option value="PB">Paraíba</option>
-					<option value="PR">Paraná</option>
-					<option value="PE">Pernambuco</option>
-					<option value="PI">Piauí</option>
-					<option value="RJ">Rio de Janeiro</option>
-					<option value="RN">Rio Grande do Norte</option>
-					<option value="RS">Rio Grande do Sul</option>
-					<option value="RO">Rondônia</option>
-					<option value="RR">Roraima</option>
-					<option value="SC">Santa Catarina</option>
-					<option value="SP">São Paulo</option>
-					<option value="SE">Sergipe</option>
-					<option value="TO">Tocantins</option>
-					</select>
-				</div>
-				</br>
+			<div class=conteudo2>
+				<div class=form>
+					<form name="userForm">
+						<div>
+							<label for="name" class="lbl">Nome:</label>
+							</br>
+							<input type="text" id="name" />
+						</div>
+						</br>
+						<div>
+							<label for="cpf" class="lbl">CPF:</label>
+							</br>
+							<input type="text" id="cpf" maxlength="11" />
+						</div>
+						</br>
+						<div>
+							<label for="cep" class="lbl">CEP:</label>
+							</br>
+							<input name="cep" type="number" id="cep" onblur="pesquisacep(this.value);" maxlength="9" />
+						</div>
+						</br>
+						<div>
+							<label for="rua" class="lbl">Logradouro (Rua):</label>
+							</br>
+							<input type="text" id="rua" />
+						</div>
+						</br>
+						<div>
+							<label for="numero" class="lbl">Número:</label>
+							</br>
+							<input type="number" id="numero" />
+						</div>
+						</br>
+						<div>
+							<label for="complemento" class="lbl">Complemento:</label>
+							</br>
+							<input type="text" id="complemento" />
+						</div>
+						</br>
+						<div>
+							<label for="bairro" class="lbl">Bairro:</label>
+							</br>
+							<input type="text" id="bairro" />
+						</div>
+						</br>
+						<div>
+							<label for="cidade" class="lbl">Localidade (Cidade):</label>
+							</br>
+							<input type="text" id="cidade" />
+						</div>
+						</br>
+						<div>
+							<label for="uf" class="lbl">UF:</label>
+							</br>
+							<select name="uf" id="uf">
+								<option>----</option>
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santos</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+						</div>
+						</br>
 
-				<div class="button2">
-					<button class="button-4" onclick="inserirPedido()">Submit</button>
-					<button class="button-4" type="reset">Reset</button>
-				</div>
+						<div class="button2">
+							<button class="button-4" onclick="inserirPedido()">Submit</button>
+							<button class="button-4" type="reset">Reset</button>
+						</div>
 
-			</form>
+					</form>
+				</div>
+				<div class="carrinho">
+					<div class="Cart-Container">
+						<div class="Header">
+							<h3 class="Heading">Carrinho de Compras</h3>
+							<h5 class="Action">Remover tudo</h5>
+						</div>
+						<div class="Cart-Items">
+							<div class="image-box">
+							</div>
+							<div class="about">
+								<h1 class="title">Apple Juice</h1>
+								<h3 class="subtitle">250ml</h3>
+							</div>
+							<div class="counter">
+								<div class="btn">+</div>
+								<div class="count">2</div>
+								<div class="btn">-</div>
+							</div>
+							<div class="prices">
+								<div class="amount">$2.99</div>
+								<div class="save"><u>Save for later</u></div>
+								<div class="remove"><u>Remove</u></div>
+							</div>
+						</div>
+						<hr>
+						<div class="checkout">
+							<div class="total">
+								<div>
+									<div class="Subtotal">Sub-Total</div>
+									<div class="items">2 items</div>
+								</div>
+								<div class="total-amount">$6.18</div>
+							</div>
+							<button class="button">Checkout</button>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="carrinho">
-				<div class="Cart-Container">
-					<div class="Header">
-						<h3 class="Heading">Carrinho de Compras</h3>
-						<h5 class="Action">Remover tudo</h5>
-					</div>
-					<div class="Cart-Items">
-						<div class="image-box">
-						</div>
-						<div class="about">
-						<h1 class="title">Apple Juice</h1>
-						<h3 class="subtitle">250ml</h3>
-						</div>
-						<div class="counter"></div>
-						<div class="prices"></div>
-						</div>
-					</div>
-					<div class="counter">
-						<div class="btn">+</div>
-						<div class="count">2</div>
-						<div class="btn">-</div>
-					</div>
-					<div class="prices">
-						<div class="amount">$2.99</div>
-						<div class="save"><u>Save for later</u></div>
-						<div class="remove"><u>Remove</u></div>
-					</div>
-					<hr> 
-					<div class="checkout">
-					<div class="total">
-					<div>
-					<div class="Subtotal">Sub-Total</div>
-					<div class="items">2 items</div>
-					</div>
-					<div class="total-amount">$6.18</div>
-					</div>
-					<button class="button">Checkout</button>
-					</div>
-				</div>
 		</div>
 	</div>
 	</div>
-	</div>
-
-
 </html>

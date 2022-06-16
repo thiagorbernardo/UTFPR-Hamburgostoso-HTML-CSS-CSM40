@@ -1,6 +1,4 @@
 .form{
-  float: left;
-	width: 45%;
 	padding: 1%;
 }
 
@@ -10,10 +8,14 @@ label{
 
 
 .carrinho{
-  float: right;
-  height: 40%;
-	width: 45%;
+  flex: 2;
 	padding: 10px;
+}
+
+.conteudo2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 
