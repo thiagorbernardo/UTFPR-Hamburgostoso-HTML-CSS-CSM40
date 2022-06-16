@@ -18,16 +18,16 @@ const getProductsByCategory = async (categoryId) => {
     return data.dados;
 }
 
-const insertProduct = async (name, code, description, price, weight, categoryId) => {
-    const res = await fetch(`${url}&c=produto&t=inserir&nome=${name}&codigo=${code}&descricao=${description}&preco=${price}&peso=${weight}&categoria=${categoryId}`, postOptions);
+const insertProduct = async (name, code, description, price, img, weight, categoryId) => {
+    const res = await fetch(`${url}&c=produto&t=inserir&nome=${name}&codigo=${code}&descricao=${description}&preco=${price}&peso=${weight}&categoria=${categoryId}&imagem=${img}`, postOptions);
     const data = await res.json();
 
     return data.dados;
 }
 
-const updateProduct = async (id, name, code, description, price, weight, categoryId) => {
+const updateProduct = async (id, name, code, description, price, img, weight, categoryId) => {
     //TODO: alterar para alguns serem opcionais
-    const res = await fetch(`${url}&c=produto&t=alterar&id=${id}&nome=${name}&codigo=${code}&descricao=${description}&preco=${price}&peso=${weight}&categoria=${categoryId}`, postOptions);
+    const res = await fetch(`${url}&c=produto&t=alterar&id=${id}&nome=${name}&codigo=${code}&descricao=${description}&preco=${price}&peso=${weight}&categoria=${categoryId}&imagem=${img}`, postOptions);
     const data = await res.json();
 
     return data.dados;

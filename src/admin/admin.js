@@ -94,6 +94,7 @@ const inserirProduto = async () => {
         document.getElementById('form_code').value,
         document.getElementById('form_description').value,
         document.getElementById('form_price').value,
+        document.getElementById('form_image').value,
         document.getElementById('form_weight').value,
         document.getElementById('category_options').value
     ).then(() => {
@@ -108,6 +109,7 @@ const atualizarProduto = async () => {
         document.getElementById('form_code').value,
         document.getElementById('form_description').value,
         document.getElementById('form_price').value,
+        document.getElementById('form_image').value,
         document.getElementById('form_weight').value,
         document.getElementById('category_options').value
     ).then(() => {
