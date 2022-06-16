@@ -110,7 +110,9 @@ const validateForm = async() => {
  }
 
  const inserirPedido = async () => {
-    validateForm();
+    if(validateForm()==false){
+        return false;
+    }else{
     insertOrder(
         document.getElementById('name').value,
         document.getElementById('cpf').value,
@@ -121,5 +123,41 @@ const validateForm = async() => {
         document.getElementById('bairro').value,
         document.getElementById('cidade').value,
         document.getElementById('uf').value,
-    );
+    )
+    }
 }
+
+const carregarCarrinho = async() => {
+    let carrinho = sessionStorage.getItem('cart');
+    carrinho = JSON.parse(carrinho);
+    let products = getAllProducts();
+    carrinho.forEach((carrinho, index) =>{
+        products.find(Id);
+        const a = createElement('div');
+        if (index == 0){
+            a.class = "Cart-Items";
+        }else{
+            a.class = "Cart-Items pad";
+        }
+        a.innerHTML = `<div class="image-box" id="image-box">
+        <img src${carrinho.image} width="120px" height = "120px"/>
+    </div>
+    <div class="about" id="about">
+        <h1 class="title">${carrinho.name}</h1>
+        <h3 class="subtitle">${carrinho.description}</h3>
+    </div>
+    <div class="counter" id="counter">
+        <div class="btn">+</div>
+        <div class="count" id="count">${carrinho.quantity}</div>
+        <div class="btn">-</div>
+    </div>
+    <div class="prices">
+        <div class="amount" id="amount">${carrinho.quantity*carrinho.price}</div>
+        <div class="remove">Remover</div>
+    </div>`
+
+        document.getElementById("Cart-Container").appendChild(a);
+
+    })
+}
+

@@ -5,6 +5,9 @@
 	<link rel="stylesheet" href="formulario.css">
 	<script src="../index.js"></script>
 	<script src="formulario.js"></script>
+	<script>
+		carregarCarrinho();
+	</script>
 	<title>
 		Formulário
 	</title>
@@ -126,23 +129,24 @@
 							<h3 class="Heading">Carrinho de Compras</h3>
 							<h5 class="Action">Remover tudo</h5>
 						</div>
-						<div class="Cart-Items">
-							<div class="image-box">
+						<div class="Cart-Items" id="Cart-items">
+							<div class="image-box" id="image-box">
+								<img width="120px" height = "120px"/>
 							</div>
-							<div class="about">
+							<div class="about" id="about">
 								<h1 class="title">Apple Juice</h1>
 								<h3 class="subtitle">250ml</h3>
 							</div>
-							<div class="counter">
+							<div class="counter" id="counter">
 								<div class="btn">+</div>
-								<div class="count">2</div>
+								<div class="count" id="count">2</div>
 								<div class="btn">-</div>
 							</div>
 							<div class="prices">
-								<div class="amount">$2.99</div>
-								<div class="save"><u>Save for later</u></div>
-								<div class="remove"><u>Remove</u></div>
+								<div class="amount" id="amount">$2.99</div>
+								<div class="remove">Remover</div>
 							</div>
+
 						</div>
 						<hr>
 						<div class="checkout">
