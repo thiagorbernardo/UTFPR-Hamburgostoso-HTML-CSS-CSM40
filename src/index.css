@@ -13,20 +13,6 @@ body {
 	font-weight: bold;
 }
 
-a {
-	text-decoration: none;
-	color: #701510;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:visited {
-	color: #701510;
-	background-color: #FBC55E;
-}
-
 .main {
 	background-color: rgb(239, 238, 241);
 	/* margin-left: -10px;
@@ -55,10 +41,12 @@ a:visited {
 .menuitem {
 	font-size: 20px;
 	color: white;
+	text-decoration: none;
 }
 
-.menuitem:visited {
+.menuitem a:visited {
 	color: white;
+	text-decoration: none;
 }
 
 .menuitem:hover {
