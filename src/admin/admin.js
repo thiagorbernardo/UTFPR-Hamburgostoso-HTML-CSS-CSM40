@@ -71,10 +71,11 @@ const generateProducts = async (id, name) => {
                 document.getElementById('form_price').value = product.preco;
                 document.getElementById('form_weight').value = product.peso;
                 document.getElementById('category_options').value = product.categoria;
-                document.getElementById('form_image').value = product.image ?? "";
+                document.getElementById('form_image').value = product.imagem ?? "";
             }
+            console.log(product.imagem)
             a.innerHTML = `<h2>${product.nome}</h2>
-            <img src="${product.image ?? "../img/avatar.png"}" alt="${product.descricao}" style="width:50%">
+            <img src="${product.imagem ?? "../img/avatar.png"}" alt="${product.descricao}" style="width:50%">
             <p>${product.descricao}</p>
             <p>ID: ${product.id}</p>
             <p>Codigo: ${product.codigo}</p>
