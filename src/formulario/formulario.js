@@ -131,19 +131,20 @@ const carregarCarrinho = async () => {
     let carrinho = sessionStorage.getItem('cart');
     carrinho = JSON.parse(carrinho);
     const products = await getAllProducts();
-
+    let totalPrice = 0;
+    let totalItems = sessionStorage.getItem('cartLength');
     carrinho.forEach((cartItem, index) => {
         const product = products.find(product => product.id === cartItem.id);
         console.log(product)
         const a = document.createElement('div');
-        a.class = index === 0 ? 'Cart-Items' : 'Cart-Items pad';
+        a.className = index === 0 ? 'Cart-Items' : 'Cart-Items pad';
 
         a.innerHTML = `<div class="image-box" id="image-box">
         <img src${product.image} width="120px" height = "120px"/>
     </div>
     <div class="about" id="about">
-        <h1 class="title">${product.name}</h1>
-        <h3 class="subtitle">${product.description}</h3>
+        <h1 class="title">${product.nome}</h1>
+        <h3 class="subtitle">${product.descricao}</h3>
     </div>
     <div class="counter" id="counter">
         <div class="btn">+</div>
@@ -151,12 +152,27 @@ const carregarCarrinho = async () => {
         <div class="btn">-</div>
     </div>
     <div class="prices">
-        <div class="amount" id="amount">${cartItem.quantity * product.price}</div>
+        <div class="amount" id="amount">${formatter.format(cartItem.quantity * product.preco)}</div>
         <div class="remove">Remover</div>
     </div>`
-
+        totalPrice += cartItem.quantity * product.preco;
         document.getElementById("Cart-Container").appendChild(a);
 
     })
+
+    const a2= document.createElement('div');
+    a2.innerHTML = `<hr>
+    <div class="checkout">
+        <div class="total">
+            <div>
+                <div class="Subtotal">Total</div>
+                <div class="items">${totalItems}</div>
+            </div>
+            <div class="total-amount">${formatter.format(totalPrice)}</div>
+        </div>
+        <button class="button">Checkout</button>
+    </div>`
+
+    document.getElementById("Cart-Container").appendChild(a2);
 }
 
