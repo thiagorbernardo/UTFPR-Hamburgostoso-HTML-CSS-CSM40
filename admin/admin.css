@@ -1,3 +1,9 @@
+.content h2 {
+  font-family: Roboto, sans-serif;
+  color: rgb(31, 31, 31);
+  font-size: 25px;
+}
+
 #button-4 {
   width: 20px;
 }
@@ -11,87 +17,52 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
+  margin-bottom: 20px;
 }
 
 #categoryName {
   font-size: 30px;
 }
 
-.modal {
+.actionButtons {
+  margin-top: 30px;
+  margin-left: 40px;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 50;
-  right: 400;
-  bottom: 350;
-  left: 400;
-  font-family: Arial, Helvetica, sans-serif;
-  background: rgba(248, 248, 248, 0.89);
-  z-index: 99999;
-  opacity: 0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
-  transition: opacity 400ms ease-in;
-  pointer-events: none;
 }
-
-.modal:target {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal>div {
-  width: 400px;
-  position: relative;
-  margin: 10% auto;
-  padding: 15px 20px;
-  background: #fff;
-}
-
-.fechar {
-  position: absolute;
-  width: 30px;
-  right: -15px;
-  top: -20px;
-  text-align: center;
-  line-height: 30px;
-  margin-top: 5px;
-  background: #ff4545;
-  border-radius: 50%;
-  font-size: 16px;
-  color: #00ff22;
-}
-
 
 /* Card */
 
 .card {
-	margin: 1rem;
-	padding: 1.5rem;
-	text-align: left;
-	color: inherit;
-	text-decoration: none;
-	border: 1px solid #eaeaea;
-	border-radius: 10px;
-	transition: color 0.15s ease, border-color 0.15s ease;
-	background: white;
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  background: white;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-	border-color: #0070f3;
-	cursor: pointer;
+  border-color: #0070f3;
+  cursor: pointer;
 }
 
 .card h2 {
-	margin: 0 0 1rem 0;
-	font-size: 1.5rem;
-	color: rgb(31, 31, 31);
-	font-family: cursive;
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: rgb(31, 31, 31);
+  font-family: cursive;
 }
 
 .card p {
-	margin: 0;
-	font-size: 1.25rem;
-	line-height: 1.5;
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
 }

@@ -30,9 +30,14 @@ const generateCategoriesForm = async () => {
 }
 
 const inserirCategoria = async () => {
-    elemento = document.getElementById('form_categoria').value;
+    const name = document.getElementById('form_categoria').value;
 
-    insertCategory(document.getElementById('form_categoria').value).then(() => {
+    if (!name) {
+        alert("Preencha o nome da categoria.")
+        return
+    }
+
+    insertCategory(name).then(() => {
         window.location.href = "index.html";
     });
 }
@@ -89,7 +94,26 @@ const generateProducts = async (id, name) => {
 }
 
 const inserirProduto = async () => {
-    insertProduct(
+    const form = document.forms["productForm"]
+
+    for (var i = 0; i < form.elements.length; i++) {
+        if (form.elements[i].value === '' && form.elements[i].hasAttribute('required')) {
+            alert('Há campos obrigatórios vazios!');
+            form.elements[i].focus();
+            return false;
+        }
+
+        if (form.elements[i].hasAttribute('pattern')) {
+            if (!form.elements[i].value.match(form.elements[i].getAttribute('pattern'))) {
+                alert('Campo com formato inválido!');
+                form.elements[i].focus();
+                return false;
+            }
+        }
+    }
+
+    await insertProduct(
+        document.getElementById('selectedProduct').value,
         document.getElementById('form_name').value,
         document.getElementById('form_code').value,
         document.getElementById('form_description').value,
