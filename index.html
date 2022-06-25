@@ -1,14 +1,14 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="../index.css">
-	<link rel="stylesheet" href="menu.css">
+	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="menu/menu.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
 		integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<script src="../index.js"></script>
-	<script src="../storage.js"></script>
-	<script src="menu.js"></script>
+	<script src="index.js"></script>
+	<script src="storage.js"></script>
+	<script src="menu/menu.js"></script>
 	<script>
 		generateCategories();
 		getAllCategories().then(categories => {
@@ -23,14 +23,13 @@
 <body>
 	<div class="main">
 		<div id="logo">
-			<img src="../img/logo2.png"></img>
+			<img src="img/logo2.png"></img>
 		</div>
 		</br>
-		<div id=menu>
-			<a href="../" class="menuitem">Home</a>
+		<div id="menu">
 			<a href="" class="menuitem">Cardápio</a>
-			<a href="../sobre/" class="menuitem">Sobre</a>
-			<a href="../contato/" class="menuitem">Contato</a>
+			<a href="../about/" class="menuitem">Sobre</a>
+			<a href="../contact/" class="menuitem">Contato</a>
 			<a href="../pedidos/" class="menuitem">Pedidos</a>
 			<a href="../admin/" class="menuitem">Administração</a>
 			<a href="../formulario/" class="menuitem">Cadastro</a>
@@ -39,7 +38,8 @@
 			<h1>Cardápio</h1>
 			<div id="categories"></div>
 
-			<div class="cd-cart" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="window.location.href = '../formulario/'">
+			<div class="cd-cart" ondrop="drop(event)" ondragover="allowDrop(event)"
+				onclick="window.location.href = '../formulario/'">
 				<i class="fas fa-shopping-cart" style="font-size: 40px; color: rgb(31, 31, 31)"></i>
 				<ul class="cd-cart__count">
 					<li id="cartCount"></li>

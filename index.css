@@ -1,10 +1,6 @@
-/* * {
-	font-family: 'Roboto', sans-serif;
-	color: #701510;
-} */
-
-body {
+html, body, .main {
 	padding: 0px;
+	min-height: 100%;
 }
 
 .lbl{
@@ -55,6 +51,9 @@ body {
 
 .content {
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .content h1 {
@@ -62,8 +61,3 @@ body {
 	font-family: sans-serif;
 	font-size: 40px;
 }
-
-h2 {
-	color: #701510;
-}
-

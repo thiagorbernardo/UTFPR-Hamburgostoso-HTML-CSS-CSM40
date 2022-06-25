@@ -1,0 +1,21 @@
+.contact {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin-bottom: 20px;
+}
+
+.contact > img {
+	margin-right: 10px;
+}
+
+.contact > a {
+	font-family: "Robot Slab", sans-serif;
+	font-size: 18px;
+	color: rgb(255, 168, 0);
+	text-decoration: none;
+}
+
+.contact > a:visited {
+	text-decoration: none;
+}

@@ -127,12 +127,19 @@ const inserirPedido = async () => {
     }
 }
 
+const updateCartItem = async (id, qtd, price) => {
+    updateCart(id, qtd);
+    document.getElementById("Cart-Container").innerHTML = "";
+    await carregarCarrinho();
+    // document.getElementById("count").innerHTML = formatter.format(qtd * price)
+}
+
 const carregarCarrinho = async () => {
     let carrinho = sessionStorage.getItem('cart');
-    carrinho = JSON.parse(carrinho);
+    carrinho = JSON.parse(carrinho) || [];
     const products = await getAllProducts();
     let totalPrice = 0;
-    let totalItems = sessionStorage.getItem('cartLength');
+    let totalItems = sessionStorage.getItem('cartLength') || 0;
     carrinho.forEach((cartItem, index) => {
         const product = products.find(product => product.id === cartItem.id);
         console.log(product)
@@ -147,20 +154,20 @@ const carregarCarrinho = async () => {
         <h3 class="subtitle">${product.descricao}</h3>
     </div>
     <div class="counter" id="counter">
-        <div class="btn">+</div>
+        <div class="btn" onClick="updateCartItem(${cartItem.id}, ${cartItem.quantity++}, ${product.preco})">+</div>
         <div class="count" id="count">${cartItem.quantity}</div>
-        <div class="btn">-</div>
+        <div class="btn" onClick="updateCartItem(${cartItem.id}, ${cartItem.quantity--}, ${product.preco})">-</div>
     </div>
     <div class="prices">
         <div class="amount" id="amount">${formatter.format(cartItem.quantity * product.preco)}</div>
-        <div class="remove">Remover</div>
+        <div class="remove" onClick="updateCartItem(${cartItem.id}, 0, 0)">Remover</div>
     </div>`
         totalPrice += cartItem.quantity * product.preco;
         document.getElementById("Cart-Container").appendChild(a);
 
     })
 
-    const a2= document.createElement('div');
+    const a2 = document.createElement('div');
     a2.innerHTML = `<hr>
     <div class="checkout">
         <div class="total">
