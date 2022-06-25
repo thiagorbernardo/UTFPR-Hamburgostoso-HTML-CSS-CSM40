@@ -42,6 +42,21 @@ const inserirCategoria = async () => {
     });
 }
 
+const updateCategoria = async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    const name = document.getElementById('form_categoria').value;
+
+    if (!name) {
+        alert("Preencha o nome da categoria.")
+        return
+    }
+
+    updateCategory(id, name).then(() => {
+        window.location.href = `products.html?id=${id}&name=${name}`;
+    });
+}
+
 const excluirCategoria = async () => {
     const products = document.getElementById('categories');
     if (products.childNodes.length > 1) {
@@ -65,11 +80,9 @@ const generateProducts = async (id, name) => {
         products.forEach(product => {
             const a = document.createElement('a');
             a.className = "card";
-            a.href = `?id=${id}&name=${name}#updateProduto`;
             a.onclick = () => {
-                document.getElementById('selectedProduct').value = product.id;
-                console.log(document.getElementById('selectedProduct'))
-                console.log(document.getElementById('selectedProduct').value)
+                $("#updateProduto").modal()
+                sessionStorage.setItem('selectedProduct', product.id);
                 document.getElementById('form_code').value = product.codigo;
                 document.getElementById('form_name').value = product.nome;
                 document.getElementById('form_description').value = product.descricao;
@@ -78,7 +91,7 @@ const generateProducts = async (id, name) => {
                 document.getElementById('category_options').value = product.categoria;
                 document.getElementById('form_image').value = product.imagem ?? "";
             }
-            console.log(product.imagem)
+
             a.innerHTML = `<h2>${product.nome}</h2>
             <img src="${product.imagem ?? "../img/avatar.png"}" alt="${product.descricao}" style="width:50%">
             <p>${product.descricao}</p>
@@ -93,27 +106,32 @@ const generateProducts = async (id, name) => {
     })
 }
 
-const inserirProduto = async () => {
-    const form = document.forms["productForm"]
+const validateForm = (name) => {
+    const form = document.forms[name]
 
     for (var i = 0; i < form.elements.length; i++) {
         if (form.elements[i].value === '' && form.elements[i].hasAttribute('required')) {
             alert('Há campos obrigatórios vazios!');
             form.elements[i].focus();
-            return false;
         }
 
         if (form.elements[i].hasAttribute('pattern')) {
             if (!form.elements[i].value.match(form.elements[i].getAttribute('pattern'))) {
                 alert('Campo com formato inválido!');
                 form.elements[i].focus();
-                return false;
             }
         }
     }
 
+    return true
+}
+
+const inserirProduto = async () => {
+    if (!validateForm("productForm")) {
+        return
+    }
+
     await insertProduct(
-        document.getElementById('selectedProduct').value,
         document.getElementById('form_name').value,
         document.getElementById('form_code').value,
         document.getElementById('form_description').value,
@@ -127,8 +145,13 @@ const inserirProduto = async () => {
 }
 
 const atualizarProduto = async () => {
-    updateProduct(
-        document.getElementById('selectedProduct').value,
+    const urlParams = new URLSearchParams(window.location.search);
+    if (!validateForm("productForm")) {
+        return
+    }
+
+    await updateProduct(
+        sessionStorage.getItem('selectedProduct'),
         document.getElementById('form_name').value,
         document.getElementById('form_code').value,
         document.getElementById('form_description').value,
@@ -137,10 +160,14 @@ const atualizarProduto = async () => {
         document.getElementById('form_weight').value,
         document.getElementById('category_options').value
     ).then(() => {
-        window.location.href = "products.html?id=" + urlParams.get('id');
+        window.location.href = `products.html?id=${urlParams.get("id")}&name=${urlParams.get("name")}`;
     });
 }
 
 const excluirProduto = async () => {
-
+    await deleteProduct(
+        sessionStorage.getItem('selectedProduct')
+    ).then(() => {
+        window.location.href = `products.html?id=${urlParams.get("id")}&name=${urlParams.get("name")}`;
+    });
 }
