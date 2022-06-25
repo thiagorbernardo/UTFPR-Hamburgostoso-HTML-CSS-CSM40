@@ -47,16 +47,20 @@ const generateProducts = async (id) => {
             a.ondragstart = (e) => {
                 e.dataTransfer.setData("id", product.id);
 
-                const img = new Image();
-                img.src = '../img/avatar.png';
-                e.dataTransfer.setDragImage(img, 10, 10);
+                const img = new Image(10, 10);
+                img.src = product.imagem;
+                img.onload = () => {
+                    img.width = 10;
+                    img.heigth = 10;
+                }
+                e.dataTransfer.setDragImage(img, 0, 0);
             }
 
             const weight = product.peso < 1 ? `${product.peso * 1000} g` : `${product.peso} Kg`;
 
             a.innerHTML = `
             <div class="card-header">
-                <img src="${product.imagem ?? "../img/avatar.png"}" alt="${product.descricao}">
+                <img src="${product.imagem}" alt="${product.descricao}">
             </div>
             <div class="card-body">
                 <h2>${product.nome}</h2>
