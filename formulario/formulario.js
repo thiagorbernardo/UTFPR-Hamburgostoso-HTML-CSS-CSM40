@@ -136,10 +136,10 @@ const updateCartItem = async (id, qtd, price) => {
 
 const carregarCarrinho = async () => {
     let carrinho = sessionStorage.getItem('cart');
-    carrinho = JSON.parse(carrinho);
+    carrinho = JSON.parse(carrinho) || [];
     const products = await getAllProducts();
     let totalPrice = 0;
-    let totalItems = sessionStorage.getItem('cartLength');
+    let totalItems = sessionStorage.getItem('cartLength') || 0;
     carrinho.forEach((cartItem, index) => {
         const product = products.find(product => product.id === cartItem.id);
         console.log(product)
