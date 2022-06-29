@@ -1,11 +1,19 @@
-const generateOrders = () => {
+const generateOrders = async () => {
     const orderId = sessionStorage.getItem("order");
+
+    const products = await getAllProducts();
+
+    console.log(products)
 
     getOrder(orderId).then(orders => {
         console.log(orders)
 
         const order = orders.find((order) => order.id == orderId);
 
+        if (!order) {
+            alert("Pedido não encontrado")
+            return
+        }
         console.log(order)
 
         const menu = document.getElementById('orders');
@@ -17,8 +25,6 @@ const generateOrders = () => {
             <li class="list-group-item-dark">ID Pedido: ${order.id}</li>
             <li class="list-group-item">Pedido feito por: ${order.nome} às ${order.time}</li>
             <li class="list-group-item">Endereço: ${order.rua}, ${order.numero} - ${order.cep} (${order.cidade}, ${order.uf})</li>
-            </br>
-            </br></br>
            `;
         listItems.appendChild(div);
 
@@ -30,7 +36,9 @@ const generateOrders = () => {
             itensByOrder.forEach(item => {
                 const li = document.createElement('li');
                 li.className = "list-group-item";
-                li.innerHTML = `${item.produto} x${item.qtd}`
+                const product = products.find((product) => product.id == item.produto); 
+                console.log(product)
+                li.innerHTML = `${product.nome} x ${+item.qtd}: ${formatter.format(item.qtd * product.preco)}`
                 listItems.appendChild(li);
             })
         })
