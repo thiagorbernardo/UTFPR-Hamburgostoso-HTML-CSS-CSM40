@@ -83,6 +83,14 @@ const getAllOrders = async () => {
     return data.dados;
 }
 
+const getOrderItems = async (id) => {
+    const res = await fetch(`${url}&c=item&t=listar&id=${id}`);
+    const data = await res.json();
+
+    return data.dados;
+}
+
+
 const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
