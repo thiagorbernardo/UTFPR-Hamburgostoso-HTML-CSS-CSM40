@@ -84,32 +84,33 @@ function mascara(i) {
 const validateForm = () => {
     if (document.forms["userForm"]["name"].value == "") {
         alert("Insira um nome");
-        return false;
+        return;
     }
     if (document.forms["userForm"]["cpf"].value.length < 11) {
         alert("Coloque um cpf válido");
-        return false;
+        return;
     }
     if (document.forms["userForm"]["cep"].value.length < 8) {
         alert("Coloque um cep válido");
-        return false;
+        return;
     }
     if (document.forms["userForm"]["numero"].value == "") {
         alert("Coloque o número do logradouro");
-        return false;
+        return;
     }
     if (document.forms["userForm"]["cidade"].value == "") {
         alert("Coloque a cidade");
-        return false;
+        return;
     }
     if (document.forms["userForm"]["uf"].value == "----") {
         alert("Coloque um estado");
-        return false;
+        return;
     }
-
+    return true
 }
 
 const inserirPedido = () => {
+    debugger
     if (!validateForm()) {
         return
     }
@@ -146,11 +147,9 @@ const carregarCarrinho = async () => {
     carrinho.forEach((cartItem, index) => {
         const product = products.find(product => product.id === cartItem.id);
         console.log(product)
-        console.log(cartItem.id)
         const a = document.createElement('div');
         a.className = index === 0 ? 'Cart-Items' : 'Cart-Items pad';
 
-        console.log(cartItem.quantity-1)
         a.innerHTML = `
         <div class="image-box" id="image-box" style="object-fit:cover;">
             <img src="${product.imagem}"  />
@@ -183,7 +182,7 @@ const carregarCarrinho = async () => {
             </div>
             <div class="total-amount">${formatter.format(totalPrice)}</div>
         </div>
-        <button type="button" class="btn btn-success btn-block" onclick="inserirPedido()">Checkout</button>
+        <button type="button" class="btn btn-success btn-block" onclick="checkout()">Checkout</button>
     </div>`
 
     document.getElementById("Cart-Container").appendChild(a2);
@@ -192,4 +191,23 @@ const carregarCarrinho = async () => {
 const clearCartItens = () => {
     clearCart();
     window.location.reload()
+}
+
+const checkout = async () => {
+    let cart = sessionStorage.getItem('cart');
+    const orderId = sessionStorage.getItem('orderId');
+    if (!cart || !cart.length || !orderId) {
+        alert("O carrinho está vazio!");
+    }
+
+    cart = JSON.parse(cart);
+    const reqs = cart.map(cartItem => {
+        return insertOrderItem(orderId, cartItem.id, cartItem.quantity);
+    });
+
+    await Promise.all(reqs);
+
+    sessionStorage.removeItem("orderId");
+    clearCart();
+    window.location.href = "../pedidos";
 }

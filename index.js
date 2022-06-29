@@ -90,6 +90,13 @@ const getOrderItems = async (id) => {
     return data.dados;
 }
 
+const insertOrderItem = async (id, productId, quantity) => {
+    const res = await fetch(`${url}&c=item&t=inserir&pedido=${id}&produto=${productId}&qtd=${quantity}`, postOptions);
+    const data = await res.json();
+
+    return data.dados;
+}
+
 
 const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
