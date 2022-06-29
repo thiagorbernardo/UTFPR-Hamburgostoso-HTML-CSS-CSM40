@@ -27,7 +27,7 @@ const generateOrders = () => {
             const itensByOrder = itens.filter((item) => item.pedido == orderId);
             console.log(itensByOrder)
 
-            itens.forEach(item => {
+            itensByOrder.forEach(item => {
                 const li = document.createElement('li');
                 li.className = "list-group-item";
                 li.innerHTML = `${item.produto} x${item.qtd}`
