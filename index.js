@@ -104,6 +104,7 @@ const insertOrderItem = async (id, productId, quantity) => {
     return data.dados;
 }
 
+const getBoletoUrl = (id) => `${url}&c=boleto&t=listar&id=${id}`;
 
 const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',

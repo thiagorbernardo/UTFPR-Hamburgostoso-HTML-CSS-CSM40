@@ -16,6 +16,7 @@ const generateOrders = async () => {
         }
         console.log(order)
 
+        let total = 0;
         const menu = document.getElementById('orders');
         const div = document.createElement('div');
         const listItems = document.createElement('ul');
@@ -29,6 +30,12 @@ const generateOrders = async () => {
         listItems.appendChild(div);
 
 
+        const getBoletoUrl = () => {
+            console.log('here')
+            window.location.href = `http://loja.buiar.com/?key=s7ueaj&c=boleto&t=listar&id=${orderId}`;
+        }
+
+
         getOrderItems(orderId).then(itens => {
             const itensByOrder = itens.filter((item) => item.pedido == orderId);
             console.log(itensByOrder)
@@ -36,14 +43,34 @@ const generateOrders = async () => {
             itensByOrder.forEach(item => {
                 const li = document.createElement('li');
                 li.className = "list-group-item";
-                const product = products.find((product) => product.id == item.produto); 
+                const product = products.find((product) => product.id == item.produto);
                 console.log(product)
                 li.innerHTML = `${product.nome} x ${+item.qtd}: ${formatter.format(item.qtd * product.preco)}`
                 listItems.appendChild(li);
+                total += item.qtd * product.preco;
             })
-        })
+            const li = document.createElement('li');
+            li.className = "list-group-item";
+            li.innerHTML = `Total: ${formatter.format(total)}`
+            listItems.appendChild(li);
 
-        menu.appendChild(listItems);
+            const li2 = document.createElement('li');
+            li2.className = "list-group-item";
+
+            const button = document.createElement('button');
+            button.className = "btn btn-primary"
+            button.type = "button"
+            button.onclick = () => {
+                window.location.href = `http://loja.buiar.com/?key=s7ueaj&c=boleto&t=listar&id=${orderId}`;
+            }
+            button.innerHTML = `Gerar Boleto`
+            li2.appendChild(button);
+
+            listItems.appendChild(li2);
+
+            menu.appendChild(listItems);
+
+        })
     });
 }
 
