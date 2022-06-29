@@ -6,20 +6,17 @@ const updateCart = (id, quantity) => {
     }
     cart = JSON.parse(cart);
 
-    let product = cart.find(p => p.id === id);
+    const product = cart.find(p => p.id.toString() === id.toString());
 
     if (product) {
-        if (!quantity) {
-            product.quantity++;
-        }
-        else if (quantity === 0) {
-            cart = cart.filter(p => p.id !== id);
+        if (quantity === 0) {
+            cart = cart.filter(p => p.id.toString() !== id.toString());
         } else {
             product.quantity = quantity;
         }
     } else {
         cart.push({
-            id,
+            id: id.toString(),
             quantity: quantity || 1
         });
     }

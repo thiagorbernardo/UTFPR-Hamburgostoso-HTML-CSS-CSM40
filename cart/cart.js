@@ -81,7 +81,7 @@ function mascara(i) {
 
 }
 
-const validateForm = async () => {
+const validateForm = () => {
     if (document.forms["userForm"]["name"].value == "") {
         alert("Insira um nome");
         return false;
@@ -109,29 +109,32 @@ const validateForm = async () => {
 
 }
 
-const inserirPedido = async () => {
-    if (validateForm() == false) {
-        return false;
-    } else {
-        insertOrder(
-            document.getElementById('name').value,
-            document.getElementById('cpf').value,
-            document.getElementById('cep').value,
-            document.getElementById('rua').value,
-            document.getElementById('numero').value,
-            document.getElementById('complemento').value,
-            document.getElementById('bairro').value,
-            document.getElementById('cidade').value,
-            document.getElementById('uf').value,
-        )
+const inserirPedido = () => {
+    if (!validateForm()) {
+        return
     }
+
+    insertOrder(
+        document.getElementById('name').value,
+        document.getElementById('cpf').value,
+        document.getElementById('cep').value,
+        document.getElementById('rua').value,
+        document.getElementById('numero').value,
+        document.getElementById('complemento').value,
+        document.getElementById('bairro').value,
+        document.getElementById('cidade').value,
+        document.getElementById('uf').value,
+    ).then(({id}) => {
+        sessionStorage.setItem("orderId", id);
+        alert("Pedido realizado com sucesso!");
+        window.location.href = "../pedidos";
+    });
 }
 
-const updateCartItem = async (id, qtd, price) => {
+const updateCartItem = (id, qtd) => {
     updateCart(id, qtd);
     document.getElementById("Cart-Container").innerHTML = "";
-    await carregarCarrinho();
-    // document.getElementById("count").innerHTML = formatter.format(qtd * price)
+    window.location.reload();
 }
 
 const carregarCarrinho = async () => {
@@ -139,32 +142,35 @@ const carregarCarrinho = async () => {
     carrinho = JSON.parse(carrinho) || [];
     const products = await getAllProducts();
     let totalPrice = 0;
-    let totalItems = sessionStorage.getItem('cartLength') || 0;
+    const totalItems = sessionStorage.getItem('cartLength') || 0;
     carrinho.forEach((cartItem, index) => {
         const product = products.find(product => product.id === cartItem.id);
         console.log(product)
+        console.log(cartItem.id)
         const a = document.createElement('div');
         a.className = index === 0 ? 'Cart-Items' : 'Cart-Items pad';
 
-        a.innerHTML = `<div class="image-box" id="image-box">
-        <img src="${product.imagem}" width="120px" height = "120px"/>
-    </div>
-    <div class="about" id="about">
-        <h1 class="title">${product.nome}</h1>
-        <h3 class="subtitle">${product.descricao}</h3>
-    </div>
-    <div class="counter" id="counter">
-        <div class="btn" onClick="updateCartItem(${cartItem.id}, ${cartItem.quantity++}, ${product.preco})">+</div>
-        <div class="count" id="count">${cartItem.quantity}</div>
-        <div class="btn" onClick="updateCartItem(${cartItem.id}, ${cartItem.quantity--}, ${product.preco})">-</div>
-    </div>
-    <div class="prices">
-        <div class="amount" id="amount">${formatter.format(cartItem.quantity * product.preco)}</div>
-        <div class="remove" onClick="updateCartItem(${cartItem.id}, 0, 0)">Remover</div>
-    </div>`
+        console.log(cartItem.quantity-1)
+        a.innerHTML = `
+        <div class="image-box" id="image-box" style="object-fit:cover;">
+            <img src="${product.imagem}"  />
+        </div>
+        <div class="about" id="about">
+            <h1 class="title">${product.nome}</h1>
+            <h3 class="subtitle">${product.descricao}</h3>
+        </div>
+        <div class="counter" id="counter">
+            <div class="quantitySigns" onClick="updateCartItem(${cartItem.id}, ${cartItem.quantity+1})">+</div>
+            <div class="count" id="count">${cartItem.quantity}</div>
+            <div class="quantitySigns" onClick="updateCartItem(${cartItem.id}, ${cartItem.quantity-1})">-</div>
+        </div>
+        <div class="prices">
+            <div class="amount" id="amount">${formatter.format(cartItem.quantity * product.preco)}</div>
+            <div class="remove" onClick="updateCartItem(${cartItem.id}, 0)">Remover</div>
+        </div>
+    `;
         totalPrice += cartItem.quantity * product.preco;
         document.getElementById("Cart-Container").appendChild(a);
-
     })
 
     const a2 = document.createElement('div');
@@ -177,9 +183,13 @@ const carregarCarrinho = async () => {
             </div>
             <div class="total-amount">${formatter.format(totalPrice)}</div>
         </div>
-        <button class="button">Checkout</button>
+        <button type="button" class="btn btn-success btn-block" onclick="inserirPedido()">Checkout</button>
     </div>`
 
     document.getElementById("Cart-Container").appendChild(a2);
 }
 
+const clearCartItens = () => {
+    clearCart();
+    window.location.reload()
+}

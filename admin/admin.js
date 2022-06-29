@@ -1,4 +1,4 @@
-const generateCategories = async () => {
+const generateCategories = () => {
     getAllCategories().then(categories => {
         console.log(categories)
         const menu = document.getElementById('categories');
@@ -16,7 +16,7 @@ const generateCategories = async () => {
     });
 }
 
-const generateCategoriesForm = async () => {
+const generateCategoriesForm = () => {
     getAllCategories().then(categories => {
         const categorias = document.getElementById('category_options')
         categories.forEach(category => {
@@ -29,7 +29,7 @@ const generateCategoriesForm = async () => {
     })
 }
 
-const inserirCategoria = async () => {
+const inserirCategoria = () => {
     const name = document.getElementById('form_categoria').value;
 
     if (!name) {
@@ -42,7 +42,7 @@ const inserirCategoria = async () => {
     });
 }
 
-const updateCategoria = async () => {
+const updateCategoria = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
     const name = document.getElementById('form_categoria').value;
@@ -57,7 +57,7 @@ const updateCategoria = async () => {
     });
 }
 
-const excluirCategoria = async () => {
+const excluirCategoria =() => {
     const products = document.getElementById('categories');
     if (products.childNodes.length > 1) {
         alert("Você não pode apagar uma categoria que ainda contenha produtos.")
@@ -68,7 +68,7 @@ const excluirCategoria = async () => {
     });
 }
 
-const generateProducts = async (id, name) => {
+const generateProducts = (id, name) => {
     getProductsByCategory(id).then(products => {
         console.log(products)
 
@@ -109,7 +109,7 @@ const generateProducts = async (id, name) => {
 const validateForm = (name) => {
     const form = document.forms[name]
 
-    for (var i = 0; i < form.elements.length; i++) {
+    for (let i = 0; i < form.elements.length; i++) {
         if (form.elements[i].value === '' && form.elements[i].hasAttribute('required')) {
             alert('Há campos obrigatórios vazios!');
             form.elements[i].focus();
