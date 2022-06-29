@@ -207,6 +207,7 @@ const checkout = async () => {
 
     await Promise.all(reqs);
 
+    alert(`Pedido realizado com sucesso! O ID do seu pedido é: ${orderId}`);
     sessionStorage.removeItem("orderId");
     clearCart();
     window.location.href = "../pedidos";
