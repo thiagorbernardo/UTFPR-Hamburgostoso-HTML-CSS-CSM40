@@ -35,3 +35,16 @@ const generateOrders = () => {
         return orders
     });
 }
+
+const setOrderId = () => {
+    const orderId = document.forms.orderForm[0].value
+
+    if (!orderId) {
+        alert("Por favor, informe o ID do pedido")
+        return
+    }
+
+    sessionStorage.setItem("order", orderId);
+
+    generateOrders();
+}
