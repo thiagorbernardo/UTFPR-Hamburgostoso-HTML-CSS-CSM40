@@ -16,6 +16,7 @@
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	align-items: baseline;
 }
 
 .cd-cart {
@@ -106,6 +107,7 @@
 	/* color: inherit; */
 	border-radius: 0px 0px 10px 10px;
 	background: white;
+	position: bottom;
 }
 
 .card-body h2 {
