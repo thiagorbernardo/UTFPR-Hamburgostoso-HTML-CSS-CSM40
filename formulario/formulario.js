@@ -147,7 +147,7 @@ const carregarCarrinho = async () => {
         a.className = index === 0 ? 'Cart-Items' : 'Cart-Items pad';
 
         a.innerHTML = `<div class="image-box" id="image-box">
-        <img src${product.image} width="120px" height = "120px"/>
+        <img src="${product.imagem}" width="120px" height = "120px"/>
     </div>
     <div class="about" id="about">
         <h1 class="title">${product.nome}</h1>
