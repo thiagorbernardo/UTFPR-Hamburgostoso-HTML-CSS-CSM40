@@ -173,17 +173,21 @@ const excluirProduto = async () => {
 }
 
 const generateOrders = () => {
+    const title = document.createElement('h2');
+    const menu = document.getElementById('orders');
+    title.innerHTML = `<h2>Pedidos</h2>`
+    menu.appendChild(title);
     getAllOrders().then(orders => {
         console.log(orders)
-        const menu = document.getElementById('orders');
-        const list = document.createElement('ol');
+        //const menu = document.getElementById('orders');
+        const listOrders = document.createElement('ol');
         orders.forEach(order => {
             const p = document.createElement('div');
             const listItems = document.createElement('ul');
             listItems.class = "list-group";
             p.innerHTML =
             `
-            <li class="list-group-item-dark">ID Pedido: ${order.id}</li>
+            <li class="list-group-item active">ID Pedido: ${order.id}</li>
             <li class="list-group-item">Pedido feito por: ${order.nome} às ${order.time}</li>
             <li class="list-group-item">Endereço: ${order.rua}, ${order.numero} - ${order.cep} (${order.cidade}, ${order.uf})</li>
         
@@ -192,7 +196,7 @@ const generateOrders = () => {
             
               
             </br></br>`;
-        listItems.appendChild(p);
+            listItems.appendChild(p);
             getOrderItems(order.id).then(itens=> {
                 const listItems = document.getElementById('')
                 itens.forEach(item => {
@@ -202,10 +206,9 @@ const generateOrders = () => {
                 })
             })
 
-            list.appendChild(listItems);
+            listOrders.appendChild(listItems);
         });
-
-        menu.appendChild(list)
+        menu.appendChild(listOrders)
         return orders
     });
 }
