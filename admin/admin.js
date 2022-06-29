@@ -200,9 +200,15 @@ const generateOrders = () => {
             getOrderItems(order.id).then(itens=> {
                 const listItems = document.getElementById('')
                 itens.forEach(item => {
-                    const a = document.createElement('div');
-                    a.innerHTML = `<li class="list-group-item>${item.produto} x${item.qtd}"`
-                    listItems.appendChild(a);
+                    const itensByOrder = itens.filter((item) => item.pedido == order.id);
+                    console.log(itensByOrder)
+
+                    itensByOrder.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = "list-group-item";
+                    li.innerHTML = `${item.produto} x${item.qtd}`
+                    listItems.appendChild(li);
+                    })
                 })
             })
 
