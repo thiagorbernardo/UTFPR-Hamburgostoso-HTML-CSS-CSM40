@@ -77,7 +77,7 @@ const insertOrder = async (nome, cpf, cep, rua, numero, complemento, bairro, cid
 }
 
 const getAllOrders = async () => {
-    const res = await fetch(`${url}&c=pedidos&t=listar`);
+    const res = await fetch(`${url}&c=pedido&t=listar`);
     const data = await res.json();
 
     return data.dados;
