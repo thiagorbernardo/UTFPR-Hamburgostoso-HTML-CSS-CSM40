@@ -110,7 +110,6 @@ const validateForm = () => {
 }
 
 const inserirPedido = () => {
-    debugger
     if (!validateForm()) {
         return
     }
@@ -127,8 +126,7 @@ const inserirPedido = () => {
         document.getElementById('uf').value,
     ).then(({id}) => {
         sessionStorage.setItem("orderId", id);
-        alert("Pedido realizado com sucesso!");
-        window.location.href = "../pedidos";
+        alert("Usuário salvo com sucesso!");
     });
 }
 
