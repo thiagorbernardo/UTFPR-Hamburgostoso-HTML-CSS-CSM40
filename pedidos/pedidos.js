@@ -4,12 +4,12 @@ const generateOrders = () => {
         const menu = document.getElementById('orders');
         const list = document.createElement('ol');
         orders.forEach(order => {
-            const p = document.createElement('li');
+            const p = document.createElement('div');
             const listItems = document.createElement('ul');
             listItems.class = "list-group";
             p.innerHTML =
             `
-            <li class="list-group-item active">ID Pedido: ${order.id}</li>
+            <li class="list-group-item-dark">ID Pedido: ${order.id}</li>
             <li class="list-group-item">Pedido feito por: ${order.nome} às ${order.time}</li>
             <li class="list-group-item">Endereço: ${order.rua}, ${order.numero} - ${order.cep} (${order.cidade}, ${order.uf})</li>
         
@@ -28,7 +28,7 @@ const generateOrders = () => {
                 })
             })
 
-            menu.appendChild(listItems);
+            list.appendChild(listItems);
         });
 
         menu.appendChild(list)
