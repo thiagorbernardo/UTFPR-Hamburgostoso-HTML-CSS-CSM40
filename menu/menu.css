@@ -1,3 +1,7 @@
+#categories {
+	margin: 0 5vw;
+}
+
 #categories>div {
 	display: flex;
 	flex-direction: column;
@@ -81,7 +85,7 @@
 	text-decoration: none;
 	border-radius: 10px;
 	transition: color 0.15s ease, border-color 0.15s ease;
-	background: rgb(238, 77, 40);
+	background: #FFA800;
 }
 
 .card:hover,
