@@ -1,7 +1,7 @@
 const generateCategories = async () => {
     getAllCategories().then(categories => {
         const menu = document.getElementById('categories');
-
+        
         categories.forEach(category => {
             const a = document.createElement('div');
             a.innerHTML = `<h2>${category.nome}</h2>`;
@@ -37,7 +37,7 @@ const drop = (e) => {
 const generateProducts = async (id) => {
     getProductsByCategory(id).then(products => {
         const menu = document.getElementById(id);
-
+        
         products.forEach(product => {
             const a = document.createElement('p');
             a.className = "card";
@@ -60,17 +60,18 @@ const generateProducts = async (id) => {
 
             a.innerHTML = `
             <div class="card-header">
-                <img src="${product.imagem}" alt="${product.descricao}">
+                <img src="${product.imagem}" alt="${product.descricao}" width=300px height=200px>
             </div>
-            <div class="card-body">
+            <div class="card-body" height = 100px>
                 <h2>${product.nome}</h2>
                 <div class="card-description">
                     <p>${product.descricao}</p>
+                </div>
                     <div class="card-price">
                         <p>${weight}</p>
                         <p class="card-price-value">${formatter.format(product.preco)}</p>
+                    
                     </div>
-                </div>
             </div>
             `;
             menu.appendChild(a);

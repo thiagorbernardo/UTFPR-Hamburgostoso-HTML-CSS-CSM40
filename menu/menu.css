@@ -107,11 +107,13 @@
 
 .card-body {
 	padding: 1.5rem;
+	height: 20vmin;
 	text-align: left;
 	/* color: inherit; */
 	border-radius: 0px 0px 10px 10px;
 	background: white;
-	position: bottom;
+	position: relative;
+	flex-direction: column;
 }
 
 .card-body h2 {
@@ -131,15 +133,26 @@
 	font-family: 'Roboto', sans-serif;
 }
 
-.card-description .card-price {
+.card-description{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 10px;
-	font-family: 'Roboto', sans-serif;
+	
+	bottom: 0px;
+	
 }
 
-.card-description .card-price-value {
+ .card-price {
+	
+	font-family: 'Roboto', sans-serif;
+	align-items: right;
+	position: absolute;
+	bottom: 0;
+	right: 2vmin;
+} 
+
+.card-price-value {
 	color: red;
 	font-size: 22px;
 }
