@@ -172,49 +172,55 @@ const excluirProduto = async () => {
     });
 }
 
-const generateOrders = () => {
+const generateOrders = async() => {
     const title = document.createElement('h2');
     const menu = document.getElementById('orders');
+    const listOrders = document.createElement('ol');
     title.innerHTML = `<h2>Pedidos</h2>`
     menu.appendChild(title);
+    const products = await getAllProducts();
     getAllOrders().then(orders => {
         console.log(orders)
-        //const menu = document.getElementById('orders');
-        const listOrders = document.createElement('ol');
+        
         orders.forEach(order => {
-            const p = document.createElement('div');
+            let total = 0;
+
+            
+            const div = document.createElement('div');
             const listItems = document.createElement('ul');
             listItems.class = "list-group";
-            p.innerHTML =
+            div.innerHTML =
             `
             <li class="list-group-item active">ID Pedido: ${order.id}</li>
             <li class="list-group-item">Pedido feito por: ${order.nome} às ${order.time}</li>
             <li class="list-group-item">Endereço: ${order.rua}, ${order.numero} - ${order.cep} (${order.cidade}, ${order.uf})</li>
-        
-    
-          </br>
-            
-              
-            </br></br>`;
-            listItems.appendChild(p);
-            getOrderItems(order.id).then(itens=> {
-                const listItems = document.getElementById('')
-                itens.forEach(item => {
-                    const itensByOrder = itens.filter((item) => item.pedido == order.id);
-                    console.log(itensByOrder)
+             `;
+            listItems.appendChild(div);
 
-                    itensByOrder.forEach(item => {
+            getOrderItems(order.id).then(itens => {
+                const itensByOrder = itens.filter((item) => item.pedido == order.id);
+                console.log(itensByOrder);
+    
+                itensByOrder.forEach(item => {
                     const li = document.createElement('li');
                     li.className = "list-group-item";
-                    li.innerHTML = `${item.produto} x${item.qtd}`
+                    const product = products.find((product) => product.id == item.produto);
+                    console.log(product)
+                    li.innerHTML = `${product.nome} x ${+item.qtd}: ${formatter.format(item.qtd * product.preco)}`
                     listItems.appendChild(li);
-                    })
-                })
-            })
-
+                    total += item.qtd * product.preco;
+                });
+                const li = document.createElement('li');
+                li.className = "list-group-item";
+                li.innerHTML = `Total: ${formatter.format(total)}`
+                listItems.appendChild(li);
+            });
+            const br = document.createElement('br');
             listOrders.appendChild(listItems);
+            listOrders.appendChild(br);
         });
-        menu.appendChild(listOrders)
-        return orders
+       
     });
+    menu.appendChild(listOrders);
+    return orders;
 }
