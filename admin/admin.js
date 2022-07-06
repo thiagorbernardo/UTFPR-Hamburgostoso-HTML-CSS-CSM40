@@ -57,7 +57,7 @@ const updateCategoria = () => {
     });
 }
 
-const excluirCategoria =() => {
+const excluirCategoria = () => {
     const products = document.getElementById('categories');
     if (products.childNodes.length > 1) {
         alert("Você não pode apagar uma categoria que ainda contenha produtos.")
@@ -172,7 +172,7 @@ const excluirProduto = async () => {
     });
 }
 
-const generateOrders = async() => {
+const generateOrders = async () => {
     const title = document.createElement('h2');
     const menu = document.getElementById('orders');
     const listOrders = document.createElement('ol');
@@ -181,18 +181,19 @@ const generateOrders = async() => {
     const products = await getAllProducts();
     getAllOrders().then(orders => {
         console.log(orders)
-        
+
         orders.forEach(order => {
             let total = 0;
 
-            
+            const time = new Date(order.time)
+
             const div = document.createElement('div');
             const listItems = document.createElement('ul');
             listItems.class = "list-group";
             div.innerHTML =
-            `
+                `
             <li class="list-group-item active">ID Pedido: ${order.id}</li>
-            <li class="list-group-item">Pedido feito por: ${order.nome} às ${order.time}</li>
+            <li class="list-group-item">Pedido feito por: ${order.nome} em ${time.toLocaleString('pt-BR')}</li>
             <li class="list-group-item">Endereço: ${order.rua}, ${order.numero} - ${order.cep} (${order.cidade}, ${order.uf})</li>
              `;
             listItems.appendChild(div);
@@ -200,7 +201,7 @@ const generateOrders = async() => {
             getOrderItems(order.id).then(itens => {
                 const itensByOrder = itens.filter((item) => item.pedido == order.id);
                 console.log(itensByOrder);
-    
+
                 itensByOrder.forEach(item => {
                     const li = document.createElement('li');
                     li.className = "list-group-item";
@@ -219,7 +220,7 @@ const generateOrders = async() => {
             listOrders.appendChild(listItems);
             listOrders.appendChild(br);
         });
-       
+
     });
     menu.appendChild(listOrders);
     return orders;

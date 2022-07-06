@@ -16,6 +16,8 @@ const generateOrders = async () => {
         }
         console.log(order)
 
+        const time = new Date(order.time)
+
         let total = 0;
         const menu = document.getElementById('orders');
         const div = document.createElement('div');
@@ -24,17 +26,10 @@ const generateOrders = async () => {
         listItems.class = "list-group";
         div.innerHTML = `
             <li class="list-group-item-dark">ID Pedido: ${order.id}</li>
-            <li class="list-group-item">Pedido feito por: ${order.nome} às ${order.time}</li>
+            <li class="list-group-item">Pedido feito por: ${order.nome} em ${time.toLocaleString('pt-BR')}</li>
             <li class="list-group-item">Endereço: ${order.rua}, ${order.numero} - ${order.cep} (${order.cidade}, ${order.uf})</li>
            `;
         listItems.appendChild(div);
-
-
-        const getBoletoUrl = () => {
-            console.log('here')
-            window.location.href = `http://loja.buiar.com/?key=s7ueaj&c=boleto&t=listar&id=${orderId}`;
-        }
-
 
         getOrderItems(orderId).then(itens => {
             const itensByOrder = itens.filter((item) => item.pedido == orderId);
