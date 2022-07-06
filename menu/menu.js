@@ -60,13 +60,13 @@ const generateProducts = async (id) => {
 
             a.innerHTML = `
             <div class="card-header">
-                <img src="${product.imagem}" alt="${product.descricao}" width=300px height=200px>
+                <img src="${product.imagem}" alt="${product.descricao}">
             </div>
-            <div class="card-body" height = 100px>
+            <div class="card-body">
                 <h2>${product.nome}</h2>
-                <div class="card-description">
-                    <p>${product.descricao}</p>
-                </div>
+                    <div class="card-description">
+                        <p>${product.descricao}</p>
+                    </div>
                     <div class="card-price">
                         <p>${weight}</p>
                         <p class="card-price-value">${formatter.format(product.preco)}</p>
