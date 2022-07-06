@@ -12,7 +12,7 @@ const updateCart = (id, quantity) => {
         if (quantity === 0) {
             cart = cart.filter(p => p.id.toString() !== id.toString());
         } else {
-            product.quantity = quantity;
+            product.quantity = quantity || product.quantity+1;
         }
     } else {
         cart.push({
