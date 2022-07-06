@@ -86,8 +86,8 @@ const generateProducts = (id, name) => {
                 document.getElementById('form_code').value = product.codigo;
                 document.getElementById('form_name').value = product.nome;
                 document.getElementById('form_description').value = product.descricao;
-                document.getElementById('form_price').value = product.preco;
-                document.getElementById('form_weight').value = product.peso;
+                document.getElementById('form_price').value = product.preco.replace('.', ',');
+                document.getElementById('form_weight').value = product.peso.replace('.', ',');
                 document.getElementById('category_options').value = product.categoria;
                 document.getElementById('form_image').value = product.imagem ?? "";
             }
@@ -99,7 +99,7 @@ const generateProducts = (id, name) => {
             <p>Codigo: ${product.codigo}</p>
             <p>ID Categoria: ${product.categoria}</p>
             <p>Preço: ${formatter.format(product.preco)}</p>
-            <p>Peso: ${product.peso} Kg</p>
+            <p>Peso: ${product.peso.replace('.', ',')} Kg</p>
             `;
             menu.appendChild(a);
         });
@@ -135,9 +135,9 @@ const inserirProduto = async () => {
         document.getElementById('form_name').value,
         document.getElementById('form_code').value,
         document.getElementById('form_description').value,
-        document.getElementById('form_price').value,
+        document.getElementById('form_price').value.replace('.', '').replace(',', '.'),
         document.getElementById('form_image').value,
-        document.getElementById('form_weight').value,
+        document.getElementById('form_weight').value.replace(',', '.'),
         document.getElementById('category_options').value
     ).then(() => {
         window.location.href = window.location.href.replace(window.location.hash, '');
@@ -155,9 +155,9 @@ const atualizarProduto = async () => {
         document.getElementById('form_name').value,
         document.getElementById('form_code').value,
         document.getElementById('form_description').value,
-        document.getElementById('form_price').value,
+        document.getElementById('form_price').value.replace('.', '').replace(',', '.'),
         document.getElementById('form_image').value,
-        document.getElementById('form_weight').value,
+        document.getElementById('form_weight').value.replace(',', '.'),
         document.getElementById('category_options').value
     ).then(() => {
         window.location.href = `products.html?id=${urlParams.get("id")}&name=${urlParams.get("name")}`;
