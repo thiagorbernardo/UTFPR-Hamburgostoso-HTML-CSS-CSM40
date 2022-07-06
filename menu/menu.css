@@ -102,12 +102,13 @@
 }
 
 .card-header img {
-	max-width: 120px;
+	max-width: 60%;
+	max-height: 200px;
 }
 
 .card-body {
 	padding: 1.5rem;
-	height: 20vmin;
+	height: 200px;
 	text-align: left;
 	/* color: inherit; */
 	border-radius: 0px 0px 10px 10px;
@@ -148,7 +149,7 @@
 	font-family: 'Roboto', sans-serif;
 	align-items: right;
 	position: absolute;
-	bottom: 0;
+	bottom: 1em;
 	right: 2vmin;
 } 
 
